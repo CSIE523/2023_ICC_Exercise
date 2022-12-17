@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.0sp1
+Ecs
+Z1 w1112107740
+Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 dC:\altera\13.0sp1\2023_ICC\2005
+Z6 8C:/altera/13.0sp1/2023_ICC/2005/Project/CS.vhd
+Z7 FC:/altera/13.0sp1/2023_ICC/2005/Project/CS.vhd
+l0
+L4
+Z8 Vmc6Yff8`Vk:^nbWP[f?3l0
+Z9 OV;C;10.1d;51
+32
+Z10 !s108 1670000041.730000
+Z11 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/altera/13.0sp1/2023_ICC/2005/Project/CS.vhd|
+Z12 !s107 C:/altera/13.0sp1/2023_ICC/2005/Project/CS.vhd|
+Z13 o-work work -2002 -explicit -O0
+Z14 tExplicit 1
+Z15 !s100 KE@YY6K6hO1E6C<>6EOWV3
+!i10b 1
+Acs_arc
+R2
+R3
+R4
+Z16 DEx4 work 2 cs 0 22 mc6Yff8`Vk:^nbWP[f?3l0
+l13
+L12
+Z17 VmJ7>J3o8fP=AdBk>7UfK42
+Z18 !s100 jaaa4IGZn2F4CH:RKIF862
+R9
+32
+R10
+R11
+R12
+R13
+R14
+!i10b 1
+vCS
+Z19 I36QTg@L38F^=IimY?C>Hd2
+Z20 VP;1JL3cV6P64E9h7iYOML3
+R5
+Z21 w1670139308
+Z22 8C:\altera\13.0sp1\2023_ICC\2005\Project\CS.v
+Z23 FC:\altera\13.0sp1\2023_ICC\2005\Project\CS.v
+L0 5
+Z24 OV;L;10.1d;51
+r1
+31
+Z25 !s90 -reportprogress|300|-work|work|C:\altera\13.0sp1\2023_ICC\2005\Project\CS.v|
+Z26 o-work work -O0
+n@c@s
+!i10b 1
+Z27 !s100 obMiF^6nCOn^Vz>586DlQ1
+!s85 0
+Z28 !s108 1670139313.489000
+Z29 !s107 C:\altera\13.0sp1\2023_ICC\2005\Project\CS.v|
+!s101 -O0
+vtest
+!i10b 1
+Z30 !s100 0M?LhnfbGfjVMG9T@B[oj3
+Z31 ILW6n;d14_EmRXeQVdi8Pf0
+Z32 V;^og4lJCliJ^1BMY8<P1B1
+R5
+Z33 w1670072597
+Z34 8C:\altera\13.0sp1\2023_ICC\2005\Project\testfixture.v
+Z35 FC:\altera\13.0sp1\2023_ICC\2005\Project\testfixture.v
+L0 7
+R24
+r1
+!s85 0
+31
+!s108 1670139313.548000
+!s107 C:\altera\13.0sp1\2023_ICC\2005\Project\testfixture.v|
+Z36 !s90 -reportprogress|300|-work|work|C:\altera\13.0sp1\2023_ICC\2005\Project\testfixture.v|
+!s101 -O0
+R26
