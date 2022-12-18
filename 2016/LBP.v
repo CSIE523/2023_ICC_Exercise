@@ -26,7 +26,7 @@ reg [3:0]cnt_out;
 reg read_done;
 reg [3:0]cnt_read;
 reg [7:0]pix [0:8];
-reg [7:0]buffer [0:8];
+reg buffer [0:8];
 wire is_edge;
 reg [7:0] tmp;
 
