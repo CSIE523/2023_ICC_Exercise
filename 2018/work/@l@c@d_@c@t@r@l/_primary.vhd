@@ -3,10 +3,12 @@ use verilog.vl_types.all;
 entity LCD_CTRL is
     generic(
         IDLE            : vl_logic_vector(0 to 2) := (Hi0, Hi0, Hi0);
-        READ            : vl_logic_vector(0 to 2) := (Hi0, Hi0, Hi1);
-        DO              : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi0);
-        \OUT\           : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi1);
-        FINISH          : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi0);
+        READ_A          : vl_logic_vector(0 to 2) := (Hi0, Hi0, Hi1);
+        READ_D          : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi0);
+        READ_OP         : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi1);
+        DO              : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi0);
+        \OUT\           : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi1);
+        FINISH          : vl_logic_vector(0 to 2) := (Hi1, Hi1, Hi0);
         WRITE           : vl_logic_vector(0 to 3) := (Hi0, Hi0, Hi0, Hi0);
         SHIFT_UP        : vl_logic_vector(0 to 3) := (Hi0, Hi0, Hi0, Hi1);
         SHIFT_DOWN      : vl_logic_vector(0 to 3) := (Hi0, Hi0, Hi1, Hi0);
@@ -36,7 +38,9 @@ entity LCD_CTRL is
     );
     attribute mti_svvh_generic_type : integer;
     attribute mti_svvh_generic_type of IDLE : constant is 1;
-    attribute mti_svvh_generic_type of READ : constant is 1;
+    attribute mti_svvh_generic_type of READ_A : constant is 1;
+    attribute mti_svvh_generic_type of READ_D : constant is 1;
+    attribute mti_svvh_generic_type of READ_OP : constant is 1;
     attribute mti_svvh_generic_type of DO : constant is 1;
     attribute mti_svvh_generic_type of \OUT\ : constant is 1;
     attribute mti_svvh_generic_type of FINISH : constant is 1;
