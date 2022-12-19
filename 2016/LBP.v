@@ -9,7 +9,7 @@ input   	gray_ready;
 input   [7:0] 	gray_data;
 output  [13:0] 	lbp_addr;
 output 	lbp_valid;
-output  [7:0] 	lbp_data;
+output  reg[7:0] 	lbp_data;
 output  	finish;
 
 
@@ -28,14 +28,14 @@ reg [3:0]cnt_read;
 reg [7:0]pix [0:8];
 reg buffer [0:8];
 wire is_edge;
-reg [7:0] tmp;
+reg  tmp;
 
 
 assign lbp_addr = {row, col};
 assign lbp_valid = (state == WRITE_0) ? 1 : (cnt_out == 9) ? 1 : 0;
 assign finish = (state == FINISH) ? 1 : 0;
 assign is_edge = (col == 0 || col == 127 || row == 0 || row == 127) ? 1 : 0;
-assign lbp_data = (is_edge == 1) ? 0 : buffer[0] + (buffer[1] << 1) + (buffer[2] << 2) + (buffer[3] << 3) + (buffer[5] << 4) + (buffer[6] << 5) + (buffer[7] << 6) + (buffer[8] << 7);
+//assign lbp_data = (is_edge == 1) ? 0 : buffer[0] + (buffer[1] << 1) + (buffer[2] << 2) + (buffer[3] << 3) + (buffer[5] << 4) + (buffer[6] << 5) + (buffer[7] << 6) + (buffer[8] << 7);
 
 always@(posedge clk or posedge reset)begin
     if(reset)
@@ -231,6 +231,7 @@ end
 //DATA OUTPUT
 always@(posedge clk or posedge reset)begin
     if(reset)begin
+        lbp_data <= 0;
         cnt_out <= 0;
     end
     else begin
@@ -240,21 +241,22 @@ always@(posedge clk or posedge reset)begin
             // else 
             //     lbp_data <= lbp_data + (buffer[cnt_out + 1] << cnt_out); // 4 5 6 7
 
-            // case (cnt_out)
-            //     0: tmp <= buffer[0];
-            //     1: tmp <= buffer[1];
-            //     2: tmp <= buffer[2];
-            //     3: tmp <= buffer[3];
-            //     4: tmp <= buffer[5];
-            //     5: tmp <= buffer[6];
-            //     6: tmp <= buffer[7];
-            //     7: tmp <= buffer[8];
-            // endcase
-            // lbp_data <= lbp_data + (tmp << (cnt_out-1));
+            case (cnt_out)
+                0: tmp <= buffer[0];
+                1: tmp <= buffer[1];
+                2: tmp <= buffer[2];
+                3: tmp <= buffer[3];
+                4: tmp <= buffer[5];
+                5: tmp <= buffer[6];
+                6: tmp <= buffer[7];
+                7: tmp <= buffer[8];
+            endcase
+            lbp_data <= lbp_data + (tmp << (cnt_out-1));
             cnt_out <= cnt_out + 1;
         end
         else begin 
             cnt_out <= 0;
+            lbp_data <= 0;
         end
     end
 end
