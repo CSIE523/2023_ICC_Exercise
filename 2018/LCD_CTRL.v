@@ -107,6 +107,8 @@ end
 //DATA INPUT or OUTPUT
 always@(posedge clk or posedge reset)begin
     if(reset)begin
+        tmp_y <= 3;
+        tmp_x <= 3;
         counter <= 0;
         for(i=0;i<64;i=i+1)
             data_in[i] <= 0;
@@ -124,19 +126,7 @@ always@(posedge clk or posedge reset)begin
             IRAM_D <= data_in[counter];
             counter <= counter + 1; 
         end
-        else 
-            counter <= 0;
-    end
-end
-
-
-always@(posedge clk or posedge reset)begin
-    if(reset)begin
-        tmp_y <= 3;
-        tmp_x <= 3;
-    end
-    else begin
-        if(state == DO)begin
+        else if(state == DO)begin
             case(cmd)
                 SHIFT_UP: begin
                     if(tmp_y == 0)
@@ -210,6 +200,8 @@ always@(posedge clk or posedge reset)begin
                 end
             endcase
         end
+        else 
+            counter <= 0;
     end 
 end
 
