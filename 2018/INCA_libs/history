@@ -1,0 +1,19 @@
+//
+// File created by:  irun
+// Do not modify this file
+
+s1::(17Jan2023:15:02:16):( ncverilog testfixture.v LCD_CTRL.v +notimingcheck )
+s2::(17Jan2023:15:02:35):( ncverilog testfixture.v LCD_CTRL.v +notimingcheck )
+s3::(17Jan2023:15:03:02):( ncverilog testfixture.v LCD_CTRL.v +notimingcheck )
+s4::(17Jan2023:15:03:36):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r )
+s5::(17Jan2023:15:07:05):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r )
+s6::(17Jan2023:15:07:16):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF )
+s7::(17Jan2023:15:08:18):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r -ALLOWREDEFINITION )
+s8::(17Jan2023:15:08:54):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r -ALLOWREDEFINITION )
+s9::(17Jan2023:15:09:09):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r -ALLOWREDEFINITION )
+s10::(17Jan2023:15:31:20):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r )
+s11::(17Jan2023:15:31:29):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r -ALLOWREDEFINITION )
+s12::(17Jan2023:15:31:56):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+SDF +access+r -ALLOWREDEFINITION )
+s13::(17Jan2023:15:33:46):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+tb1 +define+SDF +access+r -ALLOWREDEFINITION )
+s14::(17Jan2023:15:34:45):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+tb2 +define+SDF +access+r -ALLOWREDEFINITION )
+s15::(17Jan2023:15:35:03):( ncverilog testfixture.v LCD_CTRL.v LCD_CTRL_syn.v -v tsmc13_neg.v +define+tb3 +define+SDF +access+r -ALLOWREDEFINITION )
