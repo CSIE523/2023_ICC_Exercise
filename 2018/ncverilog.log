@@ -1,0 +1,253 @@
+ncverilog: 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s039: Started on Jan 17, 2023 at 15:35:03 CST
+ncverilog
+	testfixture.v
+	LCD_CTRL.v
+	LCD_CTRL_syn.v
+	-v
+	tsmc13_neg.v
+	+define+tb3
+	+define+SDF
+	+access+r
+	-ALLOWREDEFINITION
+file: testfixture.v
+	module worklib.test:v
+		errors: 0, warnings: 0
+	module worklib.IROM:v
+		errors: 0, warnings: 0
+	module worklib.IRAM:v
+		errors: 0, warnings: 0
+file: LCD_CTRL.v
+	module worklib.LCD_CTRL:v
+		errors: 0, warnings: 0
+file: LCD_CTRL_syn.v
+module LCD_CTRL ( clk, reset, cmd, cmd_valid, IROM_Q, IROM_rd, IROM_A, 
+              |
+ncvlog: *W,RECOME (LCD_CTRL_syn.v,8|14): recompiling design unit worklib.LCD_CTRL:v.
+	First compiled from line 1 of LCD_CTRL.v.
+	module worklib.LCD_CTRL:v
+		errors: 0, warnings: 1
+		Caching library 'worklib' ....... Done
+		Caching library 'tsmc13_neg' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+		Caching library 'tsmc13_neg' ....... Done
+  DFFRX1 \data_in_reg[0][7]  ( .D(n6780), .CK(clk), .RN(n7331), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1002|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18307): QN
+
+  DFFRX1 \data_in_reg[0][6]  ( .D(n6781), .CK(clk), .RN(n7346), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1100|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18307): QN
+
+  DFFRX1 \data_in_reg[0][5]  ( .D(n6782), .CK(clk), .RN(n13227), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1180|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18307): QN
+
+  DFFRX1 \data_in_reg[0][4]  ( .D(n6783), .CK(clk), .RN(n13228), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1270|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18307): QN
+
+  DFFRX1 \data_in_reg[0][3]  ( .D(n6784), .CK(clk), .RN(n7331), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1344|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18307): QN
+
+  DFFRX1 \data_in_reg[0][1]  ( .D(n6786), .CK(clk), .RN(n13233), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1418|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18307): QN
+
+  DFFSX1 \data_in_reg[0][2]  ( .D(n6785), .CK(clk), .SN(n13232), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1540|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18583): QN
+
+  DFFSX1 \data_in_reg[0][0]  ( .D(n6787), .CK(clk), .SN(n13233), .Q(
+                           |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1654|27): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18583): QN
+
+  DFFRX4 \IRAM_A_reg[2]  ( .D(n7305), .CK(clk), .RN(n13231), .QN(n12717) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1971|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18445): Q
+
+  DFFRX2 \IRAM_A_reg[4]  ( .D(n7303), .CK(clk), .RN(n13231), .QN(n12989) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1972|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18376): Q
+
+  DFFRX2 \IRAM_A_reg[3]  ( .D(n7304), .CK(clk), .RN(n13231), .QN(n12711) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1977|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18376): Q
+
+  EDFFXL \IRAM_D_reg[5]  ( .D(N4358), .E(N18885), .CK(clk), .QN(n7405) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1978|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+  EDFFXL \IRAM_D_reg[4]  ( .D(N4357), .E(N18885), .CK(clk), .QN(n7404) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1979|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+  EDFFXL \IRAM_D_reg[3]  ( .D(N4356), .E(N18885), .CK(clk), .QN(n7403) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1980|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+  EDFFXL \IRAM_D_reg[0]  ( .D(N4353), .E(N18885), .CK(clk), .QN(n7418) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1981|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+  EDFFXL \IRAM_D_reg[1]  ( .D(N4354), .E(N18885), .CK(clk), .QN(n7401) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1982|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+  EDFFXL \IRAM_D_reg[2]  ( .D(N4355), .E(N18885), .CK(clk), .QN(n7402) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1983|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+  DFFRX2 \IRAM_A_reg[0]  ( .D(n7307), .CK(clk), .RN(n13231), .QN(n12796) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1984|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,18376): Q
+
+  EDFFXL \IRAM_D_reg[7]  ( .D(N4360), .E(N18885), .CK(clk), .QN(n7407) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1985|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+  EDFFXL \IRAM_D_reg[6]  ( .D(N4359), .E(N18885), .CK(clk), .QN(n7406) );
+                       |
+ncelab: *W,CUVWSP (./LCD_CTRL_syn.v,1986|23): 1 output port was not connected:
+ncelab: (./tsmc13_neg.v,19722): Q
+
+	Reading SDF file from location "./LCD_CTRL_syn.sdf"
+	Annotating SDF timing data:
+		Compiled SDF file:     LCD_CTRL_syn.sdf.X
+		Log file:              
+		Backannotation scope:  test.LCD_CTRL
+		Configuration file:    
+		MTM control:           
+		Scale factors:         
+		Scale type:            
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U12581 of module ADDFXL <./LCD_CTRL_syn.sdf, line 30136>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U12581 of module ADDFXL <./LCD_CTRL_syn.sdf, line 30137>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U12581 of module ADDFXL <./LCD_CTRL_syn.sdf, line 30142>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U12581 of module ADDFXL <./LCD_CTRL_syn.sdf, line 30143>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge CI) S) of instance test.LCD_CTRL.U12581 of module ADDFXL <./LCD_CTRL_syn.sdf, line 30146>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge CI) S) of instance test.LCD_CTRL.U12581 of module ADDFXL <./LCD_CTRL_syn.sdf, line 30147>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U12577 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 30202>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U12577 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 30203>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U12577 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 30208>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U12577 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 30209>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge CI) S) of instance test.LCD_CTRL.U12577 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 30212>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge CI) S) of instance test.LCD_CTRL.U12577 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 30213>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U12573 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 30268>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U12573 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 30269>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U12573 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 30274>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U12573 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 30275>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge CI) S) of instance test.LCD_CTRL.U12573 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 30278>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge CI) S) of instance test.LCD_CTRL.U12573 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 30279>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U12571 of module ADDHX2 <./LCD_CTRL_syn.sdf, line 30304>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U12571 of module ADDHX2 <./LCD_CTRL_syn.sdf, line 30305>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U12571 of module ADDHX2 <./LCD_CTRL_syn.sdf, line 30308>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U12571 of module ADDHX2 <./LCD_CTRL_syn.sdf, line 30309>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U10566 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53789>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U10566 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53790>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U10566 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53795>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U10566 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53796>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge CI) S) of instance test.LCD_CTRL.U10566 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53799>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge CI) S) of instance test.LCD_CTRL.U10566 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53800>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) Y) of instance test.LCD_CTRL.U10564 of module XOR2X1 <./LCD_CTRL_syn.sdf, line 53823>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) Y) of instance test.LCD_CTRL.U10564 of module XOR2X1 <./LCD_CTRL_syn.sdf, line 53824>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) Y) of instance test.LCD_CTRL.U10564 of module XOR2X1 <./LCD_CTRL_syn.sdf, line 53827>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) Y) of instance test.LCD_CTRL.U10564 of module XOR2X1 <./LCD_CTRL_syn.sdf, line 53828>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U10563 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53848>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U10563 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53849>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U10563 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53854>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U10563 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53855>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge CI) S) of instance test.LCD_CTRL.U10563 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53858>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge CI) S) of instance test.LCD_CTRL.U10563 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53859>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U10562 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53879>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U10562 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53880>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U10562 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53885>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U10562 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53886>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge CI) S) of instance test.LCD_CTRL.U10562 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53889>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge CI) S) of instance test.LCD_CTRL.U10562 of module ADDFHX1 <./LCD_CTRL_syn.sdf, line 53890>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge S0) Y) of instance test.LCD_CTRL.U9316 of module MXI2X1 <./LCD_CTRL_syn.sdf, line 67908>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge S0) Y) of instance test.LCD_CTRL.U9316 of module MXI2X1 <./LCD_CTRL_syn.sdf, line 67909>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U8227 of module ADDHXL <./LCD_CTRL_syn.sdf, line 80427>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U8227 of module ADDHXL <./LCD_CTRL_syn.sdf, line 80428>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U8227 of module ADDHXL <./LCD_CTRL_syn.sdf, line 80431>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U8227 of module ADDHXL <./LCD_CTRL_syn.sdf, line 80432>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge A) S) of instance test.LCD_CTRL.U8192 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 80820>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge A) S) of instance test.LCD_CTRL.U8192 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 80821>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge B) S) of instance test.LCD_CTRL.U8192 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 80826>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge B) S) of instance test.LCD_CTRL.U8192 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 80827>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (posedge CI) S) of instance test.LCD_CTRL.U8192 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 80830>.
+ncelab: *W,SDFNEP: Unable to annotate to non-existent path (IOPATH (negedge CI) S) of instance test.LCD_CTRL.U8192 of module ADDFHX2 <./LCD_CTRL_syn.sdf, line 80831>.
+	Annotation completed with 0 Errors and 56 Warnings
+	SDF statistics: No. of Pathdelays = 22463  Annotated = 100.00% -- No. of Tchecks = 3278  Annotated = 100.00% 
+				        Total 	   Annotated	  Percentage
+		 Path Delays	       22463	       22463	      100.00
+		      $width	        1631	        1631	      100.00
+		  $setuphold	        1647	        1647	      100.00
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.IRAM:v <0x3dbe644b>
+			streams:   3, words:  1420
+		worklib.IROM:v <0x059d81e2>
+			streams:   3, words:  1370
+		worklib.test:v <0x081489ba>
+			streams:  10, words:  9647
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                     Instances  Unique
+		Modules:                  6465     133
+		UDPs:                      551       3
+		Primitives:              15806       7
+		Timing outputs:           7010      36
+		Registers:                 568      29
+		Scalar wires:             7567       -
+		Expanded wires:             12       2
+		Always blocks:               4       4
+		Initial blocks:              9       9
+		Pseudo assignments:          1       1
+		Timing checks:            4925     610
+		Interconnect:            21855       -
+		Delayed tcheck signals:   1639     562
+		Simulation timescale:      1ps
+	Writing initial simulation snapshot: worklib.test:v
+Loading snapshot worklib.test:v .................... Done
+*Verdi* Loading libsscore_ius152.so
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+FSDB Dumper for IUS, Release Verdi_Q-2020.03, Linux, 02/09/2020
+(C) 1996 - 2020 by Synopsys, Inc.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file 'LCD_CTRL.fsdb'
+*Verdi* : Begin traversing the scopes, layer (0).
+*Verdi* : End of traversing.
+*Verdi* : Begin traversing the MDAs, layer (0).
+*Verdi* : Enable +mda and +packedmda dumping.
+*Verdi* : End of traversing the MDAs.
+All data have been generated successfully!
+
+-------------------PASS-------------------
+
+Simulation complete via $finish(1) at time 2676997 PS + 0
+./testfixture.v:149 		    #10 $finish;
+ncsim> exit
+TOOL:	ncverilog	15.20-s039: Exiting on Jan 17, 2023 at 15:35:06 CST  (total: 00:00:03)

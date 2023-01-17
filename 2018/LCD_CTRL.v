@@ -108,7 +108,7 @@ always@(posedge clk or posedge reset)begin
         end
         else if(state == OUT)begin
             if(delay == 1)begin
-                delay = 0;
+                delay <= 0;
                 IRAM_D <= data_in[IRAM_A];
             end
             else begin
