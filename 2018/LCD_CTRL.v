@@ -48,7 +48,7 @@ assign pos = {tmp_y, tmp_x};
 assign IROM_rd = (state == READ_DATA || state == GIVE_POS) ? 1 : 0;
 assign IRAM_valid = (state == OUT) ? 1 : 0;
 assign done = (state == FINISH) ? 1 : 0;
-assign avg = (tmp >> 2);
+assign avg = {2'b00, tmp[9:2]};
 
 integer i;
 
