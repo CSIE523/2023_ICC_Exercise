@@ -35,7 +35,7 @@ assign lbp_addr = {row, col};
 assign lbp_valid = (state == WRITE_0) ? 1 : (cnt_out == 9) ? 1 : 0;
 assign finish = (state == FINISH) ? 1 : 0;
 assign is_edge = (col == 0 || col == 127 || row == 0 || row == 127) ? 1 : 0;
-//assign lbp_data = (is_edge == 1) ? 0 : buffer[0] + (buffer[1] << 1) + (buffer[2] << 2) + (buffer[3] << 3) + (buffer[5] << 4) + (buffer[6] << 5) + (buffer[7] << 6) + (buffer[8] << 7);
+
 
 always@(posedge clk or posedge reset)begin
     if(reset)
