@@ -44,7 +44,8 @@ wire [5:0]pos;
 wire [7:0]avg;
 
 assign IROM_A = IRAM_A;
-assign pos = {tmp_y, tmp_x};
+// assign pos = {tmp_y, tmp_x};
+assign pos = (tmp_y << 3) + tmp_x;
 assign IROM_rd = (state == READ_DATA || state == GIVE_POS) ? 1 : 0;
 assign IRAM_valid = (state == OUT) ? 1 : 0;
 assign done = (state == FINISH) ? 1 : 0;
