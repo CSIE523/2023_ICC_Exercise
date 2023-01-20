@@ -3,8 +3,8 @@
 `define SDFFILE    "./SYN/LBP_syn.sdf"	  // Modify your sdf file name
 `define End_CYCLE  100000000              // Modify cycle times once your design need more cycle times!
 
-`define PAT        "./pattern1.dat"    
-`define EXP        "./golden1.dat"     
+`define PAT        "./pattern3.dat"    
+`define EXP        "./golden3.dat"     
 
 
 module testfixture;

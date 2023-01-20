@@ -1,0 +1,247 @@
+module LCD_CTRL(clk, reset, datain, cmd, cmd_valid, dataout, output_valid, busy);
+input           clk;
+input           reset;
+input   [7:0]   datain;
+input   [2:0]   cmd;
+input           cmd_valid;
+output  reg[7:0]   dataout;
+output  reg        output_valid;
+output  reg        busy;
+
+reg [7:0]img_buf[63:0];
+reg [7:0]output_buf[15:0];
+reg [2:0]cmd_use;
+reg [7:0]counter;
+reg [7:0]x_origin,y_origin;
+reg [7:0]x_tmp,y_tmp;
+reg [2:0]h_shift,v_shift;
+reg magnifi;
+integer i;
+
+	always@(posedge clk or posedge reset)begin
+		if(reset) begin
+			counter<=0;
+			x_origin<=0;
+			y_origin<=0;
+			x_tmp<=0;
+			y_tmp<=0;
+			for(i=0;i<64;i=i+1) begin
+				img_buf[i]<=8'b0;
+			end
+			output_valid<=1'b0;
+			h_shift<=0;
+			v_shift<=0;
+			busy<=0;
+			magnifi<=0;
+		end
+		else begin
+			if(busy!=1'b1)begin
+				if(cmd_valid==1'b1 && busy==1'b0) begin
+					cmd_use<=cmd;
+				end
+				busy<=1'b0;
+				case(cmd_use)
+					3'd0:begin  //Reflash
+						output_buf[0]<=output_buf[0];
+						output_buf[1]<=output_buf[1];
+						output_buf[2]<=output_buf[2];
+						output_buf[3]<=output_buf[3];
+						output_buf[4]<=output_buf[4];
+						output_buf[5]<=output_buf[5];
+						output_buf[6]<=output_buf[6];
+						output_buf[7]<=output_buf[7];
+						output_buf[8]<=output_buf[8];
+						output_buf[9]<=output_buf[9];
+						output_buf[10]<=output_buf[10];
+						output_buf[11]<=output_buf[11];
+						output_buf[12]<=output_buf[12];
+						output_buf[13]<=output_buf[13];
+						output_buf[14]<=output_buf[14];
+						output_buf[15]<=output_buf[15];
+						output_valid<=1'b1;
+						busy<=1'b1;
+					end
+					3'd1:begin	//Load Data
+						img_buf[counter]<=datain;
+						counter<=counter+1;
+						x_origin<=8'd0;
+						y_origin<=8'd0;
+						x_tmp<=8'd0;
+						y_tmp<=8'd0;
+						h_shift<=0;
+						v_shift<=0;
+						magnifi<=0;
+						if(counter==8'd64)begin
+							output_buf[0]<=img_buf[0];
+							output_buf[1]<=img_buf[2];
+							output_buf[2]<=img_buf[4];
+							output_buf[3]<=img_buf[6];
+							output_buf[4]<=img_buf[16];
+							output_buf[5]<=img_buf[18];
+							output_buf[6]<=img_buf[20];
+							output_buf[7]<=img_buf[22];
+							output_buf[8]<=img_buf[32];
+							output_buf[9]<=img_buf[34];
+							output_buf[10]<=img_buf[36];
+							output_buf[11]<=img_buf[38];
+							output_buf[12]<=img_buf[48];
+							output_buf[13]<=img_buf[50];
+							output_buf[14]<=img_buf[52];
+							output_buf[15]<=img_buf[54];
+							output_valid<=1'b1;
+							busy<=1'b1;
+						end
+					end
+					3'd2:begin	//Zoom in
+						x_origin<=8'd2;
+						y_origin<=8'd2;
+						x_tmp<=8'd2;
+						y_tmp<=8'd2;
+						magnifi<=1'b1;
+						if(counter==8'd64)begin
+							output_buf[0]<=img_buf[18];
+							output_buf[1]<=img_buf[19];
+							output_buf[2]<=img_buf[20];
+							output_buf[3]<=img_buf[21];
+							output_buf[4]<=img_buf[26];
+							output_buf[5]<=img_buf[27];
+							output_buf[6]<=img_buf[28];
+							output_buf[7]<=img_buf[29];
+							output_buf[8]<=img_buf[34];
+							output_buf[9]<=img_buf[35];
+							output_buf[10]<=img_buf[36];
+							output_buf[11]<=img_buf[37];
+							output_buf[12]<=img_buf[42];
+							output_buf[13]<=img_buf[43];
+							output_buf[14]<=img_buf[44];
+							output_buf[15]<=img_buf[45];
+							output_valid<=1'b1;
+							busy<=1'b1;
+						end
+					end
+					3'd3:begin	//Zoom out
+						x_origin<=8'd0;
+						y_origin<=8'd0;
+						x_tmp<=8'd0;
+						y_tmp<=8'd0;
+						magnifi<=0;
+						if(counter==8'd64)begin
+							output_buf[0]<=img_buf[0];
+							output_buf[1]<=img_buf[2];
+							output_buf[2]<=img_buf[4];
+							output_buf[3]<=img_buf[6];
+							output_buf[4]<=img_buf[16];
+							output_buf[5]<=img_buf[18];
+							output_buf[6]<=img_buf[20];
+							output_buf[7]<=img_buf[22];
+							output_buf[8]<=img_buf[32];
+							output_buf[9]<=img_buf[34];
+							output_buf[10]<=img_buf[36];
+							output_buf[11]<=img_buf[38];
+							output_buf[12]<=img_buf[48];
+							output_buf[13]<=img_buf[50];
+							output_buf[14]<=img_buf[52];
+							output_buf[15]<=img_buf[54];
+							output_valid<=1'b1;
+							busy<=1'b1;
+						end
+					end
+					default:begin
+						if(magnifi==0)begin
+							output_buf[0]<=img_buf[0];
+							output_buf[1]<=img_buf[2];
+							output_buf[2]<=img_buf[4];
+							output_buf[3]<=img_buf[6];
+							output_buf[4]<=img_buf[16];
+							output_buf[5]<=img_buf[18];
+							output_buf[6]<=img_buf[20];
+							output_buf[7]<=img_buf[22];
+							output_buf[8]<=img_buf[32];
+							output_buf[9]<=img_buf[34];
+							output_buf[10]<=img_buf[36];
+							output_buf[11]<=img_buf[38];
+							output_buf[12]<=img_buf[48];
+							output_buf[13]<=img_buf[50];
+							output_buf[14]<=img_buf[52];
+							output_buf[15]<=img_buf[54];
+							output_valid<=1'b1;
+							busy<=1'b1;							
+						end
+						else begin
+							if(cmd_use==3'd4)begin	//Shift Right
+								if(x_tmp<4)begin
+									h_shift<=h_shift+1;
+									x_tmp<=x_tmp+1;
+								end
+								else begin
+									h_shift<=h_shift;
+									x_tmp<=x_tmp;
+								end
+							end
+							if(cmd_use==3'd5)begin	//Shift Left
+								if(x_tmp>0)begin
+									h_shift<=h_shift-1;
+									x_tmp<=x_tmp-1;
+								end
+								else begin
+									h_shift<=h_shift;
+									x_tmp<=x_tmp;
+								end
+							end
+							if(cmd_use==3'd6)begin	//Shift UP
+								if(y_tmp<4)begin
+									v_shift<=v_shift-1;
+									y_tmp<=y_tmp-1;
+								end
+								else begin
+									v_shift<=v_shift;
+									y_tmp<=y_tmp;
+								end
+							end
+							if(cmd_use==3'd7)begin	//Shift Down
+								if(y_tmp>0)begin
+									v_shift<=v_shift+1;
+									y_tmp<=y_tmp+1;
+								end
+								else begin
+									v_shift<=v_shift;
+									y_tmp<=y_tmp;
+								end
+							end
+							output_buf[0]<=img_buf[8*(y_origin+v_shift)+x_origin+h_shift];
+							output_buf[1]<=img_buf[8*(y_origin+v_shift)+x_origin+h_shift+1];
+							output_buf[2]<=img_buf[8*(y_origin+v_shift)+x_origin+h_shift+2];
+							output_buf[3]<=img_buf[8*(y_origin+v_shift)+x_origin+h_shift+3];
+							output_buf[4]<=img_buf[8*(y_origin+v_shift+1)+x_origin+h_shift];
+							output_buf[5]<=img_buf[8*(y_origin+v_shift+1)+x_origin+h_shift+1];
+							output_buf[6]<=img_buf[8*(y_origin+v_shift+1)+x_origin+h_shift+2];
+							output_buf[7]<=img_buf[8*(y_origin+v_shift+1)+x_origin+h_shift+3];
+							output_buf[8]<=img_buf[8*(y_origin+v_shift+2)+x_origin+h_shift];
+							output_buf[9]<=img_buf[8*(y_origin+v_shift+2)+x_origin+h_shift+1];
+							output_buf[10]<=img_buf[8*(y_origin+v_shift+2)+x_origin+h_shift+2];
+							output_buf[11]<=img_buf[8*(y_origin+v_shift+2)+x_origin+h_shift+3];
+							output_buf[12]<=img_buf[8*(y_origin+v_shift+3)+x_origin+h_shift];
+							output_buf[13]<=img_buf[8*(y_origin+v_shift+2)+x_origin+h_shift+1];
+							output_buf[14]<=img_buf[8*(y_origin+v_shift+2)+x_origin+h_shift+2];
+							output_buf[15]<=img_buf[8*(y_origin+v_shift+2)+x_origin+h_shift+3];
+							output_valid<=1'b1;
+							busy<=1'b1;
+						end
+					end
+				endcase
+			end
+		end
+	end
+	
+	
+	always@(posedge clk)begin
+		if(output_valid==1'b1)begin
+			for(i=0;i<16;i=i+1)begin
+				dataout<=output_buf[i];
+			end
+			counter<=0;
+			output_valid<=1'b0;
+			busy<=1'b0;
+		end
+	end
+endmodule

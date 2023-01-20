@@ -1,14 +1,14 @@
 `timescale 1ns/10ps
-`define CYCLE    100                        // Modify your clock period here
-`define SDFFILE  "./LCD_CTRL.sdf"	    // Modify your sdf file name
-`define IMAGE    "./image1.dat"             // Modify your test image file: image1.dat or image2.dat
-`define CMD      "./cmd1.dat"               // Modify your test cmd file: cmd1.dat or cmd2.dat
-`define EXPECT   "./out_golden1.dat"        // Modify your output golden file: out_golden1.dat or out_golden2.dat
+`define CYCLE    100           	        // Modify your clock period here
+`define SDFFILE  "./lcd_ctrl.sdf"	// Modify your sdf file name
+`define IMAGE    "./image2.dat"         // Modify your test image file: image1.dat or image2.dat
+`define CMD      "./cmd2.dat"           // Modify your test cmd file: cmd1.dat or cmd2.dat
+`define EXPECT   "./out_golden2.dat"    // Modify your output golden file: out_golden1.dat or out_golden2.dat
 
 module test;
-parameter IMAGE_N_PAT = 36;         // 6x6 = 36 pixels
-parameter CMD_N_PAT = 30;           // number of commands
-parameter OUT_LENGTH = 270;         // output length = (3x3) * CMD_N_PAT
+parameter IMAGE_N_PAT = 64;
+parameter CMD_N_PAT = 45;
+parameter OUT_LENGTH= 720;
 parameter t_reset = `CYCLE*2;
 
 reg           clk;
@@ -29,7 +29,7 @@ reg           stop;
 integer       i, j, out_f, err, pattern_num;
 reg           over;
 
-   lcd_ctrl top(.clk(clk), .reset(reset), .datain(datain), 
+   LCD_CTRL top(.clk(clk), .reset(reset), .datain(datain), 
                 .cmd(cmd), .cmd_valid(cmd_valid), .dataout(dataout), 
                 .output_valid(output_valid), .busy(busy));          
    

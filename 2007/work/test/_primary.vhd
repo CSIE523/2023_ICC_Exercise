@@ -2,9 +2,9 @@ library verilog;
 use verilog.vl_types.all;
 entity test is
     generic(
-        IMAGE_N_PAT     : integer := 36;
-        CMD_N_PAT       : integer := 30;
-        OUT_LENGTH      : integer := 270;
+        IMAGE_N_PAT     : integer := 64;
+        CMD_N_PAT       : integer := 45;
+        OUT_LENGTH      : integer := 720;
         t_reset         : integer := 200
     );
     attribute mti_svvh_generic_type : integer;

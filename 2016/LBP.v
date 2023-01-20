@@ -236,22 +236,12 @@ always@(posedge clk or posedge reset)begin
     end
     else begin
         if(next_state == WRITE)begin
-            // if(cnt_out < 4)
-            //     lbp_data <= lbp_data + (buffer[cnt_out] << cnt_out); // 0 1 2 3 
-            // else 
-            //     lbp_data <= lbp_data + (buffer[cnt_out + 1] << cnt_out); // 4 5 6 7
-
-            case (cnt_out)
-                0: tmp <= buffer[0];
-                1: tmp <= buffer[1];
-                2: tmp <= buffer[2];
-                3: tmp <= buffer[3];
-                4: tmp <= buffer[5];
-                5: tmp <= buffer[6];
-                6: tmp <= buffer[7];
-                7: tmp <= buffer[8];
-            endcase
-            lbp_data <= lbp_data + (tmp << (cnt_out-1));
+            if(cnt_out < 4)begin
+                lbp_data[cnt_out] <= buffer[cnt_out]; // 0 1 2 3 
+            end
+            else begin 
+                lbp_data[cnt_out] <= buffer[cnt_out + 1]; // 4 5 6 7
+            end
             cnt_out <= cnt_out + 1;
         end
         else begin 

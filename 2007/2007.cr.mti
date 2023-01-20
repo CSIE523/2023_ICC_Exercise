@@ -1,8 +1,8 @@
-C:/altera/13.0sp1/2023_ICC/2007/Code/testfixture.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2007/Code/testfixture.v
+C:/altera/13.0sp1/2023_ICC/2007/lcd_ctrl.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2007/lcd_ctrl.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module test
+-- Compiling module LCD_CTRL
 
 Top level modules:
-	test
+	LCD_CTRL
 
 } {} {}}
