@@ -127,7 +127,11 @@ always@(posedge clk or posedge rst)begin
                 1: candidate <= counter_INTER;
                 2: candidate <= ans;
             endcase
-
+        end
+        else begin
+            counter_A <= 0;
+            counter_B <= 0;
+            counter_INTER <= 0;
         end
     end
 end
@@ -149,6 +153,10 @@ always@(posedge clk or posedge rst)begin
             end
             else 
                 x <= x + 1;
+        end
+        else begin
+            x <= x;
+            y <= y;
         end
     end
 end
