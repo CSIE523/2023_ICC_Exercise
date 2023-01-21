@@ -117,16 +117,22 @@ always@(posedge clk or posedge rst)begin
         else if(state == CAL_1)begin
             if(r1 >= dis_sum_A)
                 counter_A <= counter_A + 1;
+            else 
+                counter_A <= counter_A;
             valid <= 0;
         end
         else if(state == CAL_2)begin
             if(r2 >= dis_sum_B)
                 counter_B <= counter_B + 1;
+            else
+                counter_B <= counter_B;
             valid <= 0;
         end
         else if(state == CAL_3)begin
             if(r1 >= dis_sum_A && r2 >= dis_sum_B)
                 counter_INTER <= counter_INTER + 1;
+            else 
+                counter_INTER <= counter_INTER;
             valid <= 0;
         end 
         else if(state == OUT)begin
