@@ -1,0 +1,44 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.0sp1\2023_ICC\2016
+vSET
+Z1 !s100 cNcB>f;?WQce`UMB6?GU10
+Z2 I54Yn^I0DVXESbg^5B1edP3
+Z3 Ve5afC=EK]5H:M6YaWEg6L1
+Z4 dC:\altera\13.0sp1\2023_ICC\2015
+Z5 w1674320599
+Z6 8C:\altera\13.0sp1\2023_ICC\2015\SET.v
+Z7 FC:\altera\13.0sp1\2023_ICC\2015\SET.v
+L0 1
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -reportprogress|300|-work|work|C:\altera\13.0sp1\2023_ICC\2015\SET.v|
+Z10 o-work work -O0
+Z11 n@s@e@t
+!i10b 1
+!s85 0
+Z12 !s108 1674320626.949000
+Z13 !s107 C:\altera\13.0sp1\2023_ICC\2015\SET.v|
+!s101 -O0
+vtestfixture1
+!i10b 1
+!s100 7fTKYo[k]=3GKR011Qom:2
+I4K1oLSn@V5]eRbiS5eOV40
+Z14 VWP0=oXMOeYWB]IV3[4WoU2
+R4
+w1674320624
+Z15 8C:/altera/13.0sp1/2023_ICC/2015/testfixture.v
+Z16 FC:/altera/13.0sp1/2023_ICC/2015/testfixture.v
+L0 8
+R8
+r1
+!s85 0
+31
+!s108 1674320627.013000
+!s107 C:/altera/13.0sp1/2023_ICC/2015/testfixture.v|
+Z17 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2015/testfixture.v|
+!s101 -O0
+R10

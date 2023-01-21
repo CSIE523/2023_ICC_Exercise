@@ -1,0 +1,8 @@
+C:/altera/13.0sp1/2023_ICC/2015/SET.v {1 {vlog -work work {C:\altera\13.0sp1\2023_ICC\2015\SET.v}
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module SET
+
+Top level modules:
+	SET
+
+} {} {}}
