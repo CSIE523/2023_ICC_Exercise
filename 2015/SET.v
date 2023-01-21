@@ -28,6 +28,8 @@ wire [7:0] x_dis_B, y_dis_B;
 wire [8:0] dis_sum_A, dis_sum_B;   
 wire [7:0] r1, r2;
 wire [7:0] ans; 
+wire [8:0] tmp_1;
+wire [8:0] tmp_2;
 
 assign x_dis_A = (cen[23:20] - x) * (cen[23:20] - x);
 assign y_dis_A = (cen[19:16] - y) * (cen[19:16] - y);
@@ -41,7 +43,9 @@ assign dis_sum_B = x_dis_B + y_dis_B;
 assign r1 = rad[11:8] * rad[11:8];
 assign r2 = rad[7:4] * rad[7:4];
 
-assign ans = counter_A + counter_B - counter_INTER - counter_INTER;
+assign tmp_1 = counter_A + counter_B;
+assign tmp_2 = counter_INTER + counter_INTER;
+assign ans = tmp_1 - tmp_2;
 assign busy = (state == READ) ? 0 : 1;
 
 always@(posedge clk or posedge rst)begin
@@ -158,18 +162,5 @@ always@(posedge clk or posedge rst)begin
         end
     end
 end
-
-
-// always@(posedge clk or posedge rst)begin
-//     if(rst)
-//         busy <= 0;
-//     else begin
-//         if(next_state == READ)
-//             busy <= 0;
-//         else 
-//             busy <= 1;
-//     end
-// end
-
 
 endmodule
