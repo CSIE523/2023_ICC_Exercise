@@ -24,18 +24,25 @@ reg [3:0] x, y;
 reg [6:0] counter_A, counter_B, counter_INTER;
 
 wire [7:0] x_dis_A, y_dis_A;
+wire [3:0] x_dis_A_tmp, y_dis_A_tmp;
 wire [7:0] x_dis_B, y_dis_B;
+wire [3:0] x_dis_B_tmp, y_dis_B_tmp;
 wire [8:0] dis_sum_A, dis_sum_B;   
 wire [7:0] r1, r2;
 wire [7:0] ans; 
 wire [8:0] tmp_1;
 wire [8:0] tmp_2;
 
-assign x_dis_A = (cen[23:20] - x) * (cen[23:20] - x);
-assign y_dis_A = (cen[19:16] - y) * (cen[19:16] - y);
+assign x_dis_A_tmp = (cen[23:20] > x) ? cen[23:20] - x : x - cen[23:20];
+assign y_dis_A_tmp = (cen[19:16] > y) ? cen[19:16] - y : y - cen[19:16];
+assign x_dis_B_tmp = (cen[15:12] > x) ? cen[15:12] - x : x - cen[15:12];
+assign y_dis_B_tmp = (cen[11:8] > y) ? cen[11:8] - y : y - cen[11:8];
 
-assign x_dis_B = (cen[15:12] - x) * (cen[15:12] - x);
-assign y_dis_B = (cen[11:8] - y) * (cen[11:8] - y);
+assign x_dis_A = x_dis_A_tmp * x_dis_A_tmp;
+assign y_dis_A = y_dis_A_tmp * y_dis_A_tmp;
+
+assign x_dis_B = x_dis_B_tmp * x_dis_B_tmp;
+assign y_dis_B = y_dis_B_tmp * y_dis_B_tmp;
 
 assign dis_sum_A = x_dis_A + y_dis_A;
 assign dis_sum_B = x_dis_B + y_dis_B;
