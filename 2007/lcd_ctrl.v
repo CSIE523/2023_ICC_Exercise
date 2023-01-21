@@ -66,12 +66,10 @@ always@(*)begin
 end
 
 
-//DATA INPUT
 always@(posedge clk or posedge reset)begin
     if(reset)begin
 		for(i=0;i<64;i=i+1)
 			data_in[i] <= 5;
-		// busy <= 0;
 		pos_x <= 2;
 		pos_y <= 2;
 		counter <= 0;
@@ -82,7 +80,6 @@ always@(posedge clk or posedge reset)begin
 			data_in[counter] <= datain;
 			counter <= counter + 1;
 			magnifi <= 0;
-			// busy <= 1;
 		end
 		else if(next_state == CAL) begin
 			case(cmd)
@@ -124,7 +121,6 @@ always@(posedge clk or posedge reset)begin
 					pos_y <= pos_y;
 				end
 			endcase
-			// busy <= 1;
 		end
 		else if(state == OUT)begin
 			if(magnifi == 0)begin
@@ -169,12 +165,10 @@ always@(posedge clk or posedge reset)begin
 				endcase
 			end
 			if(counter == 16)begin
-			 	// busy <= 0;
 				output_valid <= 0;
 				counter <= 0;
 			end
 			else begin
-				// busy <= 1;
 				output_valid <= 1;
 				counter <= counter + 1;
 			end
