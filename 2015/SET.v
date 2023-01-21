@@ -88,8 +88,6 @@ always@(posedge clk or posedge rst)begin
         cen <= 0;
         rad <= 0;
         mod <= 0;
-        x <= 1;
-        y <= 1;
         counter_A <= 0;
         counter_B <= 0;
         counter_INTER <= 0;
