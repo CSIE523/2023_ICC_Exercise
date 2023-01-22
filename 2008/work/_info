@@ -1,0 +1,44 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.0sp1\2023_ICC\2020
+vLCD_CTRL
+Z1 !s100 zXT@lJZjbJPgJl`cP2B;_0
+Z2 I;m@`^DZ@?4ZL?zG>CT6Kb3
+Z3 VONg8K0ohYjAgzFZ>km?f;1
+Z4 dC:\altera\13.0sp1\2023_ICC\2008
+Z5 w1674404476
+Z6 8C:/altera/13.0sp1/2023_ICC/2008/lcd_ctrl.v
+Z7 FC:/altera/13.0sp1/2023_ICC/2008/lcd_ctrl.v
+L0 1
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2008/lcd_ctrl.v|
+Z10 o-work work -O0
+Z11 n@l@c@d_@c@t@r@l
+!i10b 1
+!s85 0
+Z12 !s108 1674404518.192000
+Z13 !s107 C:/altera/13.0sp1/2023_ICC/2008/lcd_ctrl.v|
+!s101 -O0
+vtb
+!i10b 1
+!s100 :^1a^gdMOEOm68NYil>BI1
+IYLTh^T;Jc_ZmPZzzoP<U52
+Z14 Vb:7nf2nD;XP5a7eN[NeYa0
+R4
+w1674404512
+Z15 8C:/altera/13.0sp1/2023_ICC/2008/tb.v
+Z16 FC:/altera/13.0sp1/2023_ICC/2008/tb.v
+L0 8
+R8
+r1
+!s85 0
+31
+!s108 1674404518.278000
+!s107 C:/altera/13.0sp1/2023_ICC/2008/tb.v|
+Z17 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2008/tb.v|
+!s101 -O0
+R10
