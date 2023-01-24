@@ -44,8 +44,8 @@ wire [5:0]pos;
 wire [7:0]avg;
 
 assign IROM_A = IRAM_A;
-// assign pos = {tmp_y, tmp_x};
-assign pos = (tmp_y << 3) + tmp_x;
+assign pos = {tmp_y, tmp_x};
+// assign pos = (tmp_y << 3) + tmp_x;
 assign IROM_rd = (state == READ_DATA || state == GIVE_POS) ? 1 : 0;
 assign IRAM_valid = (state == OUT) ? 1 : 0;
 assign done = (state == FINISH) ? 1 : 0;
@@ -64,6 +64,7 @@ always@(*)begin
     if(reset)
         next_state = IDLE;
     else begin
+        next_state = state;
         case(state)
             IDLE:
                 next_state = READ_DATA;
@@ -75,13 +76,13 @@ always@(*)begin
             end
             CAL:begin
                 if(delay == 1) next_state = OUT;
-                else next_state = CAL;
+                //else next_state = CAL;
             end 
             OUT:
                 if(IRAM_A == 63) next_state = FINISH;
-                else next_state = OUT;
-            FINISH:
-                next_state = FINISH; 
+                //else next_state = OUT;
+            // FINISH:
+            //     next_state = FINISH; 
             default:    next_state = IDLE;
         endcase
     end 
