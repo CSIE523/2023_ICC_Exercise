@@ -4,7 +4,7 @@
 
 `define SDFFILE  "./LCD_CTRL_syn.sdf"	// Modify your sdf file name
 
-`define tb1
+`define tb3
 
 `ifdef tb1
   `define EXPECT "./tb1_goal.dat"
