@@ -20,7 +20,7 @@ reg [6:0] row, col;
 reg [7:0] data[0:8];
 reg [3:0] counter; 
 
-assign finish = (row == 127);
+assign finish = (row == 7'd127);
 
 integer i;
 
@@ -122,7 +122,7 @@ always@(posedge clk or posedge reset)begin
                 10:begin
                     lbp_valid <= 1;
                     lbp_addr <= {row, col};
-                    if(col == 126)begin
+                    if(col == 7'd126)begin
                         row <= row + 1;
                         col <= 1;
                         counter <= 0;
