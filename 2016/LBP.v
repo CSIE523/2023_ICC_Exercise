@@ -115,11 +115,6 @@ always@(posedge clk or posedge reset)begin
                     counter <= counter + 1;
                 end
                 9:begin
-                    data[8] <= gray_data;
-                    gray_req <= 0;
-                    counter <= counter + 1;
-                end
-                10:begin
                     lbp_data[0] <= (data[0] >= data[4]);
                     lbp_data[1] <= (data[1] >= data[4]);
                     lbp_data[2] <= (data[2] >= data[4]);
@@ -127,18 +122,20 @@ always@(posedge clk or posedge reset)begin
                     lbp_data[4] <= (data[5] >= data[4]);
                     lbp_data[5] <= (data[6] >= data[4]);
                     lbp_data[6] <= (data[7] >= data[4]);
-                    lbp_data[7] <= (data[8] >= data[4]);
+                    lbp_data[7] <= (gray_data >= data[4]);
+                    data[8] <= gray_data;
+                    gray_req <= 0;
                     lbp_valid <= 0;
                     counter <= counter + 1;
                 end
-                11:begin
+                10:begin
                     lbp_valid <= 1;
                     lbp_addr <= {row, col};
                     lbp_data <= lbp_data;
                     col <= col + 1;
                     counter <= counter + 1;
                 end
-                12:begin
+                11:begin
                     lbp_valid <= 0;
                     data[0] <= data[1];
                     data[3] <= data[4];
