@@ -1,6 +1,10 @@
 library verilog;
 use verilog.vl_types.all;
 entity LBP is
+    generic(
+        IDLE            : vl_logic_vector(0 to 2) := (Hi0, Hi0, Hi0);
+        READ            : vl_logic_vector(0 to 2) := (Hi0, Hi0, Hi1)
+    );
     port(
         clk             : in     vl_logic;
         reset           : in     vl_logic;
@@ -13,4 +17,7 @@ entity LBP is
         lbp_data        : out    vl_logic_vector(7 downto 0);
         finish          : out    vl_logic
     );
+    attribute mti_svvh_generic_type : integer;
+    attribute mti_svvh_generic_type of IDLE : constant is 1;
+    attribute mti_svvh_generic_type of READ : constant is 1;
 end LBP;
