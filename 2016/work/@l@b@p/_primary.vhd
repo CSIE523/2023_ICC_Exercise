@@ -4,9 +4,11 @@ entity LBP is
     generic(
         IDLE            : vl_logic_vector(0 to 2) := (Hi0, Hi0, Hi0);
         READ            : vl_logic_vector(0 to 2) := (Hi0, Hi0, Hi1);
-        WRITE           : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi0);
-        WRITE_0         : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi1);
-        \FINISH\        : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi0)
+        CAL             : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi0);
+        WRITE           : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi1);
+        WRITE_0         : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi0);
+        SHIFT           : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi1);
+        \FINISH\        : vl_logic_vector(0 to 2) := (Hi1, Hi1, Hi0)
     );
     port(
         clk             : in     vl_logic;
@@ -23,7 +25,9 @@ entity LBP is
     attribute mti_svvh_generic_type : integer;
     attribute mti_svvh_generic_type of IDLE : constant is 1;
     attribute mti_svvh_generic_type of READ : constant is 1;
+    attribute mti_svvh_generic_type of CAL : constant is 1;
     attribute mti_svvh_generic_type of WRITE : constant is 1;
     attribute mti_svvh_generic_type of WRITE_0 : constant is 1;
+    attribute mti_svvh_generic_type of SHIFT : constant is 1;
     attribute mti_svvh_generic_type of \FINISH\ : constant is 1;
 end LBP;

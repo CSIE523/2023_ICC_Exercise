@@ -1,11 +1,4 @@
-C:/altera/13.0sp1/2023_ICC/2018/LCD_CTRL.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2018/LCD_CTRL.v
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module LCD_CTRL
-
-Top level modules:
-	LCD_CTRL
-
-} {} {}} C:/altera/13.0sp1/2023_ICC/2018/testfixture.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2018/testfixture.v
+C:/altera/13.0sp1/2023_ICC/2018/testfixture.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2018/testfixture.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module test
 -- Compiling module IROM
@@ -13,5 +6,12 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 
 Top level modules:
 	test
+
+} {} {}} C:/altera/13.0sp1/2023_ICC/2018/LCD_CTRL.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2018/LCD_CTRL.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module LCD_CTRL
+
+Top level modules:
+	LCD_CTRL
 
 } {} {}}
