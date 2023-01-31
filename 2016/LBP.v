@@ -9,7 +9,7 @@ input   	    gray_ready;
 input   [7:0] 	gray_data;
 output  reg [13:0] 	lbp_addr;
 output 	reg lbp_valid;
-output  reg [7:0] 	lbp_data;
+output   [7:0] 	lbp_data;
 output  	finish;
 
 reg state, next_state;
@@ -20,6 +20,16 @@ reg [7:0] data[0:8];
 reg [3:0] counter; 
 
 assign finish = (lbp_addr == 14'd16257);
+
+assign lbp_data[0] = (data[0] >= data[4]);
+assign lbp_data[3] = (data[3] >= data[4]);
+assign lbp_data[5] = (data[6] >= data[4]);
+assign lbp_data[1] = (data[1] >= data[4]);
+assign lbp_data[2] = (data[2] >= data[4]);
+assign lbp_data[4] = (data[5] >= data[4]);
+assign lbp_data[6] = (data[7] >= data[4]);
+assign lbp_data[7] = (data[8] >= data[4]);
+
 
 integer i;
 
@@ -103,16 +113,16 @@ always@(posedge clk or posedge reset)begin
                     gray_addr <= lbp_addr + 129;
                     data[5] <= gray_data;
                     counter <= counter + 1;
-                    lbp_data[0] <= (data[0] >= data[4]);
-                    lbp_data[3] <= (data[3] >= data[4]);
-                    lbp_data[5] <= (data[6] >= data[4]);
+                    // lbp_data[0] <= (data[0] >= data[4]);
+                    // lbp_data[3] <= (data[3] >= data[4]);
+                    // lbp_data[5] <= (data[6] >= data[4]);
                 end
                 9:begin
-                    lbp_data[1] <= (data[1] >= data[4]);
-                    lbp_data[2] <= (data[2] >= data[4]);
-                    lbp_data[4] <= (data[5] >= data[4]);
-                    lbp_data[6] <= (data[7] >= data[4]);
-                    lbp_data[7] <= (gray_data >= data[4]);
+                    // lbp_data[1] <= (data[1] >= data[4]);
+                    // lbp_data[2] <= (data[2] >= data[4]);
+                    // lbp_data[4] <= (data[5] >= data[4]);
+                    // lbp_data[6] <= (data[7] >= data[4]);
+                    // lbp_data[7] <= (gray_data >= data[4]);
                     data[8] <= gray_data;
                     gray_req <= 0;
                     lbp_valid <= 0;
