@@ -98,20 +98,20 @@ always@(posedge clk or posedge reset)begin
                     gray_addr <= lbp_addr + 1;
                     data[2] <= gray_data;
                     counter <= counter + 1;
+                    lbp_data[0] <= (data[0] >= data[4]);
+                    lbp_data[3] <= (data[3] >= data[4]);
+                    lbp_data[5] <= (data[6] >= data[4]);
                 end
                 8:begin
                     gray_addr <= lbp_addr + 129;
                     data[5] <= gray_data;
                     counter <= counter + 1;
+                    lbp_data[1] <= (data[1] >= data[4]);
+                    lbp_data[6] <= (data[7] >= data[4]);
                 end
                 9:begin
-                    lbp_data[0] <= (data[0] >= data[4]);
-                    lbp_data[1] <= (data[1] >= data[4]);
                     lbp_data[2] <= (data[2] >= data[4]);
-                    lbp_data[3] <= (data[3] >= data[4]);
                     lbp_data[4] <= (data[5] >= data[4]);
-                    lbp_data[5] <= (data[6] >= data[4]);
-                    lbp_data[6] <= (data[7] >= data[4]);
                     lbp_data[7] <= (gray_data >= data[4]);
                     data[8] <= gray_data;
                     gray_req <= 0;
