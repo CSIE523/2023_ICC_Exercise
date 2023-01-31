@@ -12,7 +12,7 @@ output 	reg lbp_valid;
 output  reg [7:0] 	lbp_data;
 output  	finish;
 
-reg [1:0]state, next_state;
+reg state, next_state;
 parameter IDLE = 3'd0,
         READ = 3'd1; 
 
