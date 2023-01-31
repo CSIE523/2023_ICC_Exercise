@@ -15,8 +15,7 @@ output  	finish;
 reg [1:0]state, next_state;
 parameter IDLE = 3'd0,
         READ = 3'd1,
-        WRITE_0 = 3'd2,
-        SHIFT = 3'd3;
+        WRITE_0 = 3'd2; 
 
 reg [6:0] row, col;
 reg [7:0] data[0:8];
@@ -37,16 +36,18 @@ always@(*)begin
     if(reset)
         next_state = IDLE;
     else begin
-        next_state = state;
+        // next_state = state;
         case(state)
             IDLE:
                 next_state = READ;
             READ:begin
-                if(row == 0 || col == 0 || row == 127 || col == 127)next_state = WRITE_0;
+                next_state = READ;
+                // if(row == 0 || col == 0 || row == 127 || col == 127)next_state = WRITE_0;
             end 
             WRITE_0:begin
-                if(row == 0 || col == 0 || row == 127 || col ==127) next_state = WRITE_0;
-                else next_state = READ;
+                next_state = READ;
+                // if(row == 0 || col == 0 || row == 127 || col ==127) next_state = WRITE_0;
+                // else next_state = READ;
             end
             default:    next_state = IDLE;
         endcase
