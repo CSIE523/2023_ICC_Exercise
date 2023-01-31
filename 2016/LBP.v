@@ -14,14 +14,13 @@ output  	finish;
 
 reg [1:0]state, next_state;
 parameter IDLE = 3'd0,
-        READ = 3'd1,
-        WRITE_0 = 3'd2; 
+        READ = 3'd1; 
 
 reg [6:0] row, col;
 reg [7:0] data[0:8];
 reg [3:0] counter; 
 
-assign finish = (row == 127 && col == 127);
+assign finish = (row == 127);
 
 integer i;
 
@@ -36,19 +35,10 @@ always@(*)begin
     if(reset)
         next_state = IDLE;
     else begin
-        // next_state = state;
+        next_state = state;
         case(state)
             IDLE:
                 next_state = READ;
-            READ:begin
-                next_state = READ;
-                // if(row == 0 || col == 0 || row == 127 || col == 127)next_state = WRITE_0;
-            end 
-            WRITE_0:begin
-                next_state = READ;
-                // if(row == 0 || col == 0 || row == 127 || col ==127) next_state = WRITE_0;
-                // else next_state = READ;
-            end
             default:    next_state = IDLE;
         endcase
     end 
@@ -61,8 +51,8 @@ always@(posedge clk or posedge reset)begin
         for(i=0;i<9;i=i+1)
             data[i] <= 0;
         counter <= 0;
-        row <= 0;
-        col <= 0;
+        row <= 1;
+        col <= 1;
         lbp_valid <= 0;
         gray_req <= 0;
         gray_addr <= 0;
@@ -72,8 +62,8 @@ always@(posedge clk or posedge reset)begin
             case(counter)
                 0:begin
                     gray_addr <= {row-7'd1, col-7'd1};
-                    counter <= counter + 1;
                     gray_req <= 1;
+                    counter <= counter + 1;
                 end
                 1:begin
                     gray_addr <= {row, col-7'd1};
@@ -132,9 +122,15 @@ always@(posedge clk or posedge reset)begin
                 10:begin
                     lbp_valid <= 1;
                     lbp_addr <= {row, col};
-                    lbp_data <= lbp_data;
-                    col <= col + 1;
-                    counter <= counter + 1;
+                    if(col == 126)begin
+                        row <= row + 1;
+                        col <= 1;
+                        counter <= 0;
+                    end
+                    else begin
+                        col <= col + 1;
+                        counter <= counter + 1;
+                    end
                 end
                 11:begin
                     lbp_valid <= 0;
@@ -150,18 +146,6 @@ always@(posedge clk or posedge reset)begin
                 end
                 default: counter <= 0;
             endcase
-        end
-        else if(next_state == WRITE_0)begin
-            lbp_addr <= {row, col};
-            lbp_data <= 0;
-            lbp_valid <= 1;
-            if(col == 127)begin
-                row <= row + 1;
-                col <= 0;
-            end
-            else 
-                col <= col + 1;
-            counter <= 0;
         end
     end
 end
