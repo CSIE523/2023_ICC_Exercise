@@ -35,9 +35,10 @@ always@(*)begin
     if(reset)
         next_state = IDLE;
     else begin
-        next_state = state;
         case(state)
             IDLE:
+                next_state = READ;
+            READ:
                 next_state = READ;
             default:    next_state = IDLE;
         endcase
