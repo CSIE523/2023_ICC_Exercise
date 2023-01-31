@@ -18,14 +18,15 @@ parameter IDLE = 3'd0,
         CAL = 3'd2,
         WRITE = 3'd3,
         WRITE_0 = 3'd4,
-        SHIFT = 3'd5,
-        FINISH = 3'd6;
+        SHIFT = 3'd5;
 
 reg [6:0] row, col;
 reg [7:0] data[0:8];
 reg [3:0] counter; 
 
-assign finish = (state == FINISH);
+
+//assign lbp_addr = {row, col};
+assign finish = (row == 127 && col == 127) ? 1 : 0;
 
 integer i;
 
@@ -54,14 +55,11 @@ always@(*)begin
                 next_state = SHIFT;
             end
             WRITE_0:begin
-                if(row == 127 && col == 127) next_state = FINISH;
-                else if(row == 0 || col == 0 || row == 127 || col ==127) next_state = WRITE_0;
+                if(row == 0 || col == 0 || row == 127 || col ==127) next_state = WRITE_0;
                 else next_state = READ;
             end
             SHIFT:
                 next_state = READ;
-            FINISH:
-                next_state = FINISH;
             default:    next_state = IDLE;
         endcase
     end 
@@ -150,7 +148,6 @@ always@(posedge clk or posedge reset)begin
         else if(state == WRITE)begin
             lbp_valid <= 1;
             lbp_addr <= {row, col};
-            lbp_data <= lbp_data;
             col <= col + 1;
         end
         else if(next_state == WRITE_0)begin
