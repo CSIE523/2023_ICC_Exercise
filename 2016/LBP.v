@@ -16,11 +16,10 @@ reg state, next_state;
 parameter IDLE = 3'd0,
         READ = 3'd1; 
 
-reg [6:0] row, col;
 reg [7:0] data[0:8];
 reg [3:0] counter; 
 
-assign finish = (row == 7'd127);
+assign finish = (lbp_addr == 14'd16257);
 
 integer i;
 
@@ -52,57 +51,56 @@ always@(posedge clk or posedge reset)begin
         for(i=0;i<9;i=i+1)
             data[i] <= 0;
         counter <= 0;
-        row <= 1;
-        col <= 1;
         lbp_valid <= 0;
         gray_req <= 0;
         gray_addr <= 0;
+        lbp_addr <= 129;
     end
     else begin
         if(state == READ)begin
             case(counter)
                 0:begin
-                    gray_addr <= {row-7'd1, col-7'd1};
+                    gray_addr <= lbp_addr - 129;
                     gray_req <= 1;
                     counter <= counter + 1;
                 end
                 1:begin
-                    gray_addr <= {row, col-7'd1};
+                    gray_addr <= lbp_addr - 1;
                     data[0] <= gray_data;
                     counter <= counter + 1;
                 end
                 2:begin
-                    gray_addr <= {row+7'd1, col-7'd1};
+                    gray_addr <= lbp_addr + 127;
                     data[3] <= gray_data;
                     counter <= counter + 1;
                 end
                 3:begin
-                    gray_addr <= {row-7'd1, col};
+                    gray_addr <= lbp_addr - 128;
                     data[6] <= gray_data;
                     counter <= counter + 1;
                 end
                 4:begin
-                    gray_addr <= {row, col};
+                    gray_addr <= lbp_addr;
                     data[1] <= gray_data;
                     counter <= counter + 1;
                 end
                 5:begin
-                    gray_addr <= {row+7'd1, col};
+                    gray_addr <= lbp_addr + 128;
                     data[4] <= gray_data;
                     counter <= counter + 1;
                 end
                 6:begin
-                    gray_addr <= {row-7'd1, col+7'd1};
+                    gray_addr <= lbp_addr - 127;
                     data[7] <= gray_data;
                     counter <= counter + 1;
                 end
                 7:begin
-                    gray_addr <= {row, col+7'd1};
+                    gray_addr <= lbp_addr + 1;
                     data[2] <= gray_data;
                     counter <= counter + 1;
                 end
                 8:begin
-                    gray_addr <= {row+7'd1, col+7'd1};
+                    gray_addr <= lbp_addr + 129;
                     data[5] <= gray_data;
                     counter <= counter + 1;
                 end
@@ -122,19 +120,22 @@ always@(posedge clk or posedge reset)begin
                 end
                 10:begin
                     lbp_valid <= 1;
-                    lbp_addr <= {row, col};
-                    if(col == 7'd126)begin
-                        row <= row + 1;
-                        col <= 1;
-                        counter <= 0;
-                    end
-                    else begin
-                        col <= col + 1;
-                        counter <= counter + 1;
-                    end
+                    lbp_addr <= lbp_addr;
+                    counter <= counter + 1;
                 end
                 11:begin
                     lbp_valid <= 0;
+                    if(lbp_addr[6:0] == 126)begin
+                        lbp_addr[6:0] <= 1;
+                        counter <= 0;
+                        lbp_addr[13:7] <= lbp_addr[13:7] + 1; 
+                    end
+                    else begin
+                        lbp_addr[6:0] <= lbp_addr[6:0] + 1;
+                        counter <= counter + 1;
+                    end
+                end
+                12:begin
                     data[0] <= data[1];
                     data[3] <= data[4];
                     data[6] <= data[7];
@@ -142,7 +143,7 @@ always@(posedge clk or posedge reset)begin
                     data[4] <= data[5];
                     data[7] <= data[8];
                     gray_req <= 1;
-                    gray_addr <= {row-7'd1, col+7'd1};
+                    gray_addr <= lbp_addr - 127;
                     counter <= 7;
                 end
                 default: counter <= 0;
