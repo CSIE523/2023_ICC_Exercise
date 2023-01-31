@@ -41,6 +41,7 @@ always@(*)begin
     if(reset)
         next_state = IDLE;
     else begin
+        next_state = state;
         case(state)
             IDLE:
                 next_state = WRITE_0;
