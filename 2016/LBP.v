@@ -24,7 +24,6 @@ parameter IDLE = 3'd0,
 reg [6:0] row, col;
 reg [7:0] data[0:8];
 reg [3:0] counter; 
-reg read_done;
 
 assign finish = (state == FINISH);
 
@@ -47,7 +46,6 @@ always@(*)begin
             READ:begin
                 if(row == 0 || col == 0 || row == 127 || col ==127)next_state = WRITE_0;
                 else if(counter == 9) next_state = CAL;
-                else next_state = READ; 
             end
             CAL:begin
                 next_state = WRITE;
@@ -62,6 +60,8 @@ always@(*)begin
             end
             SHIFT:
                 next_state = READ;
+            FINISH:
+                next_state = FINISH;
             default:    next_state = IDLE;
         endcase
     end 
