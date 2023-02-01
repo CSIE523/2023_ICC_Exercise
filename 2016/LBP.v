@@ -70,6 +70,7 @@ always@(posedge clk or posedge reset)begin
         if(state == READ)begin
             case(counter)
                 0:begin
+                    gray_req <= 1;
                     gray_addr <= lbp_addr - 129;
                     counter <= counter + 1;
                 end
