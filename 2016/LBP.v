@@ -35,26 +35,26 @@ assign gray_req = (gray_ready == 1);
 
 integer i;
 
-always@(posedge clk or posedge reset)begin
-    if(reset)
-        state <= IDLE;
-    else 
-        state <= next_state;
-end
+// always@(posedge clk or posedge reset)begin
+//     if(reset)
+//         state <= IDLE;
+//     else 
+//         state <= next_state;
+// end
 
-always@(*)begin
-    if(reset)
-        next_state = IDLE;
-    else begin
-        case(state)
-            IDLE:
-                next_state = READ;
-            READ:
-                next_state = READ;
-            default:    next_state = IDLE;
-        endcase
-    end 
-end
+// always@(*)begin
+//     if(reset)
+//         next_state = IDLE;
+//     else begin
+//         case(state)
+//             IDLE:
+//                 next_state = READ;
+//             READ:
+//                 next_state = READ;
+//             default:    next_state = IDLE;
+//         endcase
+//     end 
+// end
 
 
 //DATA INPUT
@@ -67,7 +67,7 @@ always@(posedge clk or posedge reset)begin
         lbp_addr <= 14'd129;
     end
     else begin
-        if(state == READ)begin
+        // if(state == READ)begin
             case(counter)
                 4'd0:begin
                     gray_addr <= gray_addr - 14'd129;
@@ -145,7 +145,7 @@ always@(posedge clk or posedge reset)begin
                 end
                 default: counter <= 0;
             endcase
-        end
+        // end
     end
 end
 
