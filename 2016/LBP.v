@@ -135,18 +135,6 @@ always@(posedge clk or posedge reset)begin
                     // lbp_addr <= lbp_addr;
                     //lbp_addr <= {row, col};
                     counter <= counter + 4'd1;
-                end
-                4'd11:begin
-                    // if(lbp_addr[6:0] == 7'd126)begin
-                    //     counter <= 0;
-                    //     lbp_addr[6:0] <= 7'd1; 
-                    //     lbp_addr[13:7] <= lbp_addr[13:7] + 7'd1;
-                    //     gray_addr <= gray_addr - 14'd126;
-                    // end
-                    // else begin
-                    //     lbp_addr[6:0] <= lbp_addr[6:0] + 7'd1;
-                    //     counter <= counter + 4'd1;
-                    // end
                     if(col == 126)begin
                         counter <= 0;
                         row <= row + 1;
@@ -157,7 +145,20 @@ always@(posedge clk or posedge reset)begin
                         col <= col + 1;
                     end
                 end
-                4'd12:begin
+                // 4'd11:begin
+                //     // if(lbp_addr[6:0] == 7'd126)begin
+                //     //     counter <= 0;
+                //     //     lbp_addr[6:0] <= 7'd1; 
+                //     //     lbp_addr[13:7] <= lbp_addr[13:7] + 7'd1;
+                //     //     gray_addr <= gray_addr - 14'd126;
+                //     // end
+                //     // else begin
+                //     //     lbp_addr[6:0] <= lbp_addr[6:0] + 7'd1;
+                //     //     counter <= counter + 4'd1;
+                //     // end
+                    
+                // end
+                4'd11:begin
                     data[0] <= data[1];
                     data[3] <= data[4];
                     data[6] <= data[7];
