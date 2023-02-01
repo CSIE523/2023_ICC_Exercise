@@ -134,7 +134,7 @@ always@(posedge clk or posedge reset)begin
                 4'd10:begin
                     // lbp_addr <= lbp_addr;
                     //lbp_addr <= {row, col};
-                    counter <= counter + 4'd1;
+                    // counter <= counter + 4'd1;
                     if(col == 126)begin
                         counter <= 0;
                         row <= row + 1;
