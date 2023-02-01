@@ -68,9 +68,9 @@ always@(posedge clk or posedge reset)begin
     end
     else begin
         if(state == READ)begin
+            gray_req <= 1;
             case(counter)
                 0:begin
-                    gray_req <= 1;
                     gray_addr <= lbp_addr - 129;
                     counter <= counter + 1;
                 end
@@ -141,10 +141,11 @@ always@(posedge clk or posedge reset)begin
                         counter <= 0;
                         lbp_addr[6:0] <= 1; 
                         lbp_addr[13:7] <= lbp_addr[13:7] + 1;
+                        gray_addr <= gray_addr - 127;
                     end
                     else begin
                         lbp_addr[6:0] <= lbp_addr[6:0] + 1;
-                        gray_addr <= lbp_addr - 126;
+                        gray_addr <= gray_addr - 255;
                         counter <= 7;
                     end
                     
