@@ -9,7 +9,7 @@ input   	    gray_ready;
 input   [7:0] 	gray_data;
 output  reg [13:0] 	lbp_addr;
 output 	 lbp_valid;
-output   reg[7:0] 	lbp_data;
+output   [7:0] 	lbp_data;
 output  	finish;
 
 reg state, next_state;
@@ -21,14 +21,14 @@ reg [3:0] counter;
 
 assign finish = (lbp_addr == 14'd16257);
 
-// assign lbp_data[0] = (data[0] >= data[4]);
-// assign lbp_data[3] = (data[3] >= data[4]);
-// assign lbp_data[5] = (data[6] >= data[4]);
-// assign lbp_data[1] = (data[1] >= data[4]);
-// assign lbp_data[2] = (data[2] >= data[4]);
-// assign lbp_data[4] = (data[5] >= data[4]);
-// assign lbp_data[6] = (data[7] >= data[4]);
-// assign lbp_data[7] = (gray_data >= data[4]);
+assign lbp_data[0] = (data[0] >= data[4]);
+assign lbp_data[3] = (data[3] >= data[4]);
+assign lbp_data[5] = (data[6] >= data[4]);
+assign lbp_data[1] = (data[1] >= data[4]);
+assign lbp_data[2] = (data[2] >= data[4]);
+assign lbp_data[4] = (data[5] >= data[4]);
+assign lbp_data[6] = (data[7] >= data[4]);
+assign lbp_data[7] = (data[8] >= data[4]);
 
 assign lbp_valid = (counter == 10);
 
@@ -68,9 +68,9 @@ always@(posedge clk or posedge reset)begin
     end
     else begin
         if(state == READ)begin
-            gray_req <= 1;
             case(counter)
                 0:begin
+                    gray_req <= 1;
                     gray_addr <= lbp_addr - 129;
                     counter <= counter + 1;
                 end
@@ -108,47 +108,40 @@ always@(posedge clk or posedge reset)begin
                     gray_addr <= lbp_addr + 1;
                     data[2] <= gray_data;
                     counter <= counter + 1;
-                    lbp_data[0] <= (data[0] >= data[4]);
-                    lbp_data[3] <= (data[3] >= data[4]);
-                    lbp_data[5] <= (data[6] >= data[4]);
                 end
                 8:begin
                     gray_addr <= lbp_addr + 129;
                     data[5] <= gray_data;
                     counter <= counter + 1;
-                    lbp_data[1] <= (data[1] >= data[4]);
-                    lbp_data[6] <= (data[7] >= data[4]);
                 end
                 9:begin
                     data[8] <= gray_data;
                     counter <= counter + 1;
-                    lbp_data[2] <= (data[2] >= data[4]);
-                    lbp_data[4] <= (data[5] >= data[4]);
-                    lbp_data[7] <= (gray_data >= data[4]);
                 end
                 10:begin
                     lbp_addr <= lbp_addr;
                     counter <= counter + 1;
-                    data[0] <= data[1];
-                    data[3] <= data[4];
-                    data[6] <= data[7];
-                    data[1] <= data[2];
-                    data[4] <= data[5];
-                    data[7] <= data[8];
                 end
                 11:begin
                     if(lbp_addr[6:0] == 126)begin
                         counter <= 0;
                         lbp_addr[6:0] <= 1; 
                         lbp_addr[13:7] <= lbp_addr[13:7] + 1;
-                        gray_addr <= gray_addr - 127;
                     end
                     else begin
                         lbp_addr[6:0] <= lbp_addr[6:0] + 1;
-                        gray_addr <= gray_addr - 255;
-                        counter <= 7;
+                        counter <= counter + 1;
                     end
-                    
+                end
+                12:begin
+                    data[0] <= data[1];
+                    data[3] <= data[4];
+                    data[6] <= data[7];
+                    data[1] <= data[2];
+                    data[4] <= data[5];
+                    data[7] <= data[8];
+                    gray_addr <= lbp_addr - 127;
+                    counter <= 7;
                 end
                 default: counter <= 0;
             endcase
