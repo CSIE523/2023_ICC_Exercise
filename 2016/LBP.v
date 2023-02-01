@@ -32,7 +32,7 @@ assign lbp_data[4] = (data[5] >= data[4]);
 assign lbp_data[6] = (data[7] >= data[4]);
 assign lbp_data[7] = (data[8] >= data[4]);
 
-assign lbp_valid = (counter == 11);
+assign lbp_valid = (counter == 10);
 assign gray_req = (gray_ready == 1);
 assign lbp_addr = {row, col};
 
