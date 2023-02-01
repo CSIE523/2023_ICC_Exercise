@@ -63,53 +63,53 @@ always@(posedge clk or posedge reset)begin
         for(i=0;i<9;i=i+1)
             data[i] <= 0;
         counter <= 0;
-        gray_addr <= 0;
+        gray_addr <= 14'd129;
         lbp_addr <= 14'd129;
     end
     else begin
         if(state == READ)begin
             case(counter)
                 4'd0:begin
-                    gray_addr <= lbp_addr - 14'd129;
+                    gray_addr <= gray_addr - 14'd129;
                     counter <= counter + 4'd1;
                 end
                 4'd1:begin
-                    gray_addr <= lbp_addr - 14'd1;
+                    gray_addr <= gray_addr + 14'd128;
                     data[0] <= gray_data;
                     counter <= counter + 4'd1;
                 end
                 4'd2:begin
-                    gray_addr <= lbp_addr + 14'd127;
+                    gray_addr <= gray_addr + 14'd128;
                     data[3] <= gray_data;
                     counter <= counter + 4'd1;
                 end
                 4'd3:begin
-                    gray_addr <= lbp_addr - 14'd128;
+                    gray_addr <= gray_addr - 14'd255;
                     data[6] <= gray_data;
                     counter <= counter + 4'd1;
                 end
                 4'd4:begin
-                    gray_addr <= lbp_addr;
+                    gray_addr <= gray_addr + 14'd128;
                     data[1] <= gray_data;
                     counter <= counter + 4'd1;
                 end
                 4'd5:begin
-                    gray_addr <= lbp_addr + 14'd128;
+                    gray_addr <= gray_addr + 14'd128;
                     data[4] <= gray_data;
                     counter <= counter + 4'd1;
                 end
                 4'd6:begin
-                    gray_addr <= lbp_addr - 14'd127;
+                    gray_addr <= gray_addr - 14'd255;
                     data[7] <= gray_data;
                     counter <= counter + 4'd1;
                 end
                 4'd7:begin
-                    gray_addr <= lbp_addr + 14'd1;
+                    gray_addr <= gray_addr + 14'd128;
                     data[2] <= gray_data;
                     counter <= counter + 4'd1;
                 end
                 4'd8:begin
-                    gray_addr <= lbp_addr + 14'd129;
+                    gray_addr <= gray_addr + 14'd128;
                     data[5] <= gray_data;
                     counter <= counter + 4'd1;
                 end
@@ -126,6 +126,7 @@ always@(posedge clk or posedge reset)begin
                         counter <= 0;
                         lbp_addr[6:0] <= 7'd1; 
                         lbp_addr[13:7] <= lbp_addr[13:7] + 7'd1;
+                        gray_addr <= gray_addr - 14'd126;
                     end
                     else begin
                         lbp_addr[6:0] <= lbp_addr[6:0] + 7'd1;
@@ -139,7 +140,7 @@ always@(posedge clk or posedge reset)begin
                     data[1] <= data[2];
                     data[4] <= data[5];
                     data[7] <= data[8];
-                    gray_addr <= lbp_addr - 14'd127;
+                    gray_addr <= gray_addr - 14'd255;
                     counter <= 4'd7;
                 end
                 default: counter <= 0;
