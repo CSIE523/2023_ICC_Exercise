@@ -7,7 +7,7 @@ output  reg [13:0] 	gray_addr;
 output         	gray_req;
 input   	    gray_ready;
 input   [7:0] 	gray_data;
-output  reg [13:0] 	lbp_addr;
+output   [13:0] 	lbp_addr;
 output 	 lbp_valid;
 output   [7:0] 	lbp_data;
 output  	finish;
@@ -34,6 +34,7 @@ assign lbp_data[7] = (data[8] >= data[4]);
 
 assign lbp_valid = (counter == 11);
 assign gray_req = (gray_ready == 1);
+assign lbp_addr = {row, col};
 
 integer i;
 
@@ -132,7 +133,7 @@ always@(posedge clk or posedge reset)begin
                 end
                 4'd10:begin
                     // lbp_addr <= lbp_addr;
-                    lbp_addr <= {row, col};
+                    //lbp_addr <= {row, col};
                     counter <= counter + 4'd1;
                 end
                 4'd11:begin
