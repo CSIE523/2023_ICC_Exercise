@@ -4,7 +4,7 @@ module LBP ( clk, reset, gray_addr, gray_req, gray_ready, gray_data, lbp_addr, l
 input   	clk;
 input   	reset;
 output  reg [13:0] 	gray_addr;
-output  reg       	gray_req;
+output         	gray_req;
 input   	    gray_ready;
 input   [7:0] 	gray_data;
 output  reg [13:0] 	lbp_addr;
@@ -31,6 +31,7 @@ assign lbp_data[6] = (data[7] >= data[4]);
 assign lbp_data[7] = (data[8] >= data[4]);
 
 assign lbp_valid = (counter == 10);
+assign gray_req = (gray_ready == 1);
 
 integer i;
 
@@ -62,7 +63,6 @@ always@(posedge clk or posedge reset)begin
         for(i=0;i<9;i=i+1)
             data[i] <= 0;
         counter <= 0;
-        gray_req <= 1;
         gray_addr <= 0;
         lbp_addr <= 129;
     end
@@ -70,7 +70,6 @@ always@(posedge clk or posedge reset)begin
         if(state == READ)begin
             case(counter)
                 0:begin
-                    gray_req <= 1;
                     gray_addr <= lbp_addr - 129;
                     counter <= counter + 1;
                 end
