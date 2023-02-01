@@ -8,7 +8,7 @@ output  reg       	gray_req;
 input   	    gray_ready;
 input   [7:0] 	gray_data;
 output  reg [13:0] 	lbp_addr;
-output 	reg lbp_valid;
+output 	 lbp_valid;
 output   [7:0] 	lbp_data;
 output  	finish;
 
@@ -30,6 +30,7 @@ assign lbp_data[4] = (data[5] >= data[4]);
 assign lbp_data[6] = (data[7] >= data[4]);
 assign lbp_data[7] = (data[8] >= data[4]);
 
+assign lbp_valid = (counter == 10);
 
 integer i;
 
@@ -61,8 +62,7 @@ always@(posedge clk or posedge reset)begin
         for(i=0;i<9;i=i+1)
             data[i] <= 0;
         counter <= 0;
-        lbp_valid <= 0;
-        gray_req <= 0;
+        gray_req <= 1;
         gray_addr <= 0;
         lbp_addr <= 129;
     end
@@ -71,7 +71,6 @@ always@(posedge clk or posedge reset)begin
             case(counter)
                 0:begin
                     gray_addr <= lbp_addr - 129;
-                    gray_req <= 1;
                     counter <= counter + 1;
                 end
                 1:begin
@@ -113,31 +112,20 @@ always@(posedge clk or posedge reset)begin
                     gray_addr <= lbp_addr + 129;
                     data[5] <= gray_data;
                     counter <= counter + 1;
-                    // lbp_data[0] <= (data[0] >= data[4]);
-                    // lbp_data[3] <= (data[3] >= data[4]);
-                    // lbp_data[5] <= (data[6] >= data[4]);
                 end
                 9:begin
-                    // lbp_data[1] <= (data[1] >= data[4]);
-                    // lbp_data[2] <= (data[2] >= data[4]);
-                    // lbp_data[4] <= (data[5] >= data[4]);
-                    // lbp_data[6] <= (data[7] >= data[4]);
-                    // lbp_data[7] <= (gray_data >= data[4]);
                     data[8] <= gray_data;
-                    gray_req <= 0;
-                    lbp_valid <= 0;
                     counter <= counter + 1;
                 end
                 10:begin
-                    lbp_valid <= 1;
                     lbp_addr <= lbp_addr;
                     counter <= counter + 1;
                 end
                 11:begin
-                    lbp_valid <= 0;
                     if(lbp_addr[6:0] == 126)begin
                         counter <= 0;
-                        lbp_addr <= lbp_addr + 3;
+                        lbp_addr[6:0] <= 1; 
+                        lbp_addr[13:7] <= lbp_addr[13:7] + 1;
                     end
                     else begin
                         lbp_addr[6:0] <= lbp_addr[6:0] + 1;
@@ -151,7 +139,6 @@ always@(posedge clk or posedge reset)begin
                     data[1] <= data[2];
                     data[4] <= data[5];
                     data[7] <= data[8];
-                    gray_req <= 1;
                     gray_addr <= lbp_addr - 127;
                     counter <= 7;
                 end
