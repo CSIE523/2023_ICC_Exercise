@@ -116,8 +116,8 @@ always@(posedge clk or posedge reset)begin
                     gray_addr <= lbp_addr + 129;
                     data[5] <= gray_data;
                     counter <= counter + 1;
-                    lbp_data[1] = (data[1] >= data[4]);
-                    lbp_data[6] = (data[7] >= data[4]);
+                    lbp_data[1] <= (data[1] >= data[4]);
+                    lbp_data[6] <= (data[7] >= data[4]);
                 end
                 9:begin
                     data[8] <= gray_data;
