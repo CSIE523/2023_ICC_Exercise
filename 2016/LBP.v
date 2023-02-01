@@ -21,7 +21,7 @@ reg [7:0] data[0:8];
 reg [3:0] counter; 
 
 // assign finish = (lbp_addr == 14'd16257);
-assign finish = (row == 127);
+assign finish = (row == 127&& col == 1);
 
 assign lbp_data[0] = (data[0] >= data[4]);
 assign lbp_data[3] = (data[3] >= data[4]);
