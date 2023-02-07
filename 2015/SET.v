@@ -180,8 +180,8 @@ always@(posedge clk or posedge rst)begin
                 x <= x + 1;
         end
         else begin
-            x <= 1;
-            y <= 1;
+            x <= x;
+            y <= y;
         end
     end
 end
