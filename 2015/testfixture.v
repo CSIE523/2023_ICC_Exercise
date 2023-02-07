@@ -3,7 +3,7 @@
 `define cycle 25.0
 `define terminate_cycle 400000 // Modify your terminate cycle here
 
-`define MD2
+`define MD1
 
 module testfixture1;
 

@@ -5,7 +5,7 @@ input en;
 input [23:0] central;
 input [11:0] radius;
 input [1:0] mode;
-output  busy;
+output reg busy;
 output reg valid;
 output reg [7:0] candidate;
 
@@ -22,6 +22,7 @@ reg [11:0] rad;
 reg [1:0] mod;
 reg [3:0] x, y;
 reg [6:0] counter_A, counter_B, counter_INTER;
+reg read;
 
 wire [7:0] x_dis_A, y_dis_A;
 wire [3:0] x_dis_A_tmp, y_dis_A_tmp;
@@ -53,7 +54,6 @@ assign r2 = rad[7:4] * rad[7:4];
 assign tmp_1 = counter_A + counter_B;
 assign tmp_2 = counter_INTER + counter_INTER;
 assign ans = tmp_1 - tmp_2;
-assign busy = (state == READ) ? 0 : 1;
 
 always@(posedge clk or posedge rst)begin
     if(rst)
@@ -70,8 +70,9 @@ always@(*)begin
             IDLE:
                 next_state = READ;
             READ:begin
-                if(en == 1) next_state = CAL_1;
+                if(en == 0) next_state = CAL_1;
                 else next_state = READ;  
+                // next_state = CAL_1;
             end
             CAL_1:begin
                 if(x == 8 && y == 8) next_state = CAL_2;
@@ -103,9 +104,11 @@ always@(posedge clk or posedge rst)begin
         counter_B <= 0;
         counter_INTER <= 0;
         valid <= 0;
+        busy <= 0;
+        read <= 0;
     end
     else begin
-        if(state == READ)begin
+        if(next_state == READ)begin
             cen <= central;
             rad <= radius;
             mod <= mode;
@@ -113,30 +116,36 @@ always@(posedge clk or posedge rst)begin
             counter_A <= 0;
             counter_B <= 0;
             counter_INTER <= 0;
+            busy <= 0;
+            read <= 1;
         end
-        else if(state == CAL_1)begin
+        else if(next_state == CAL_1)begin
             if(r1 >= dis_sum_A)
                 counter_A <= counter_A + 1;
             else 
                 counter_A <= counter_A;
             valid <= 0;
+            busy <= 1;
         end
-        else if(state == CAL_2)begin
+        else if(next_state == CAL_2)begin
             if(r2 >= dis_sum_B)
                 counter_B <= counter_B + 1;
             else
                 counter_B <= counter_B;
             valid <= 0;
+            busy <= 1;
         end
-        else if(state == CAL_3)begin
+        else if(next_state == CAL_3)begin
             if(r1 >= dis_sum_A && r2 >= dis_sum_B)
                 counter_INTER <= counter_INTER + 1;
             else 
                 counter_INTER <= counter_INTER;
             valid <= 0;
+            busy <= 1;
         end 
-        else if(state == OUT)begin
+        else if(next_state == OUT)begin
             valid <= 1;
+            busy <= 1;
             case(mod)
                 0: candidate <= counter_A;
                 1: candidate <= counter_INTER;
@@ -147,6 +156,7 @@ always@(posedge clk or posedge rst)begin
             counter_A <= 0;
             counter_B <= 0;
             counter_INTER <= 0;
+            busy <= 0;
         end
     end
 end
@@ -157,7 +167,7 @@ always@(posedge clk or posedge rst)begin
         y <= 1;
     end
     else begin
-        if(state == CAL_1 || state == CAL_2 || state == CAL_3)begin
+        if(next_state == CAL_1 || next_state == CAL_2 || next_state == CAL_3)begin
             if(x == 8 && y == 8)begin
                 x <= 1;
                 y <= 1;
