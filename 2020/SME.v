@@ -6,7 +6,7 @@ input isstring;
 input ispattern;
 output reg match;
 output reg [4:0] match_index;
-output reg valid;
+output  valid;
 
 
 reg [2:0]state, next_state;
@@ -21,6 +21,8 @@ reg [7:0]pat[0:7];
 
 reg [4:0]str_len;
 reg [2:0]pat_len;
+
+assign valid = (state == OUT);
 
 always@(posedge clk or posedge reset)begin
     if(reset)
@@ -48,13 +50,14 @@ always@(*)begin
                 else next_state = READ_PATTERN;
             end
             CAL:begin
-                if() next_state = OUT;
-                else next_state = CAL;
+                // if() next_state = OUT;
+                // else next_state = CAL;
+                next_state = OUT;
             end 
             OUT:
                 if(ispattern == 1) next_state = READ_PATTERN;
                 else if(isstring == 1) next_state = READ_STRING; 
-                else next_state = IDLE;
+                else next_state = OUT;
             default:    next_state = IDLE;
         endcase
     end 
@@ -68,17 +71,17 @@ always@(posedge clk or posedge reset)begin
         pat_len <= 0;
     end
     else begin
-        if(state == READ_STRING)begin
+        if(next_state == READ_STRING)begin
             str[str_len] <= chardata;
             str_len <= str_len + 1;
         end 
-        else if(state == READ_PATTERN)begin
+        else if(next_state == READ_PATTERN)begin
             pat[pat_len] <= chardata;
             pat_len <= pat_len + 1;
         end
-        else if(state == OUT)begin
-            
-
+        else if(next_state == OUT)begin
+            match <= 1;
+            match_index <= 1;
         end
     end
 end

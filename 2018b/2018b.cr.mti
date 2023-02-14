@@ -1,0 +1,15 @@
+C:/altera/13.0sp1/2023_ICC/2018b/huffman.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2018b/huffman.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module huffman
+
+Top level modules:
+	huffman
+
+} {} {}} C:/altera/13.0sp1/2023_ICC/2018b/tb.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2018b/tb.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module tb
+
+Top level modules:
+	tb
+
+} {} {}}
