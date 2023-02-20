@@ -25,9 +25,6 @@ parameter IDLE = 3'd0,
 	  FINISH_0 = 3'd4,
 	  FINISH = 3'd5;
 
-reg fill, msb, low;
-reg [1:0] length;
-
 reg [7:0] _8bits_data;
 reg [15:0] data;
 reg [23:0] _24bits_data;
@@ -84,17 +81,12 @@ always@(posedge clk or posedge reset)begin
 			done <= 0;
 			pixel_wr <= 0;
 		end
-		else if(next_state == READ)begin
+		else if(next_state == READ)
 			data <= pi_data;
-			length <= pi_length;
-			fill <= pi_fill;	//CAL && (24bits or 32 bits)
-			msb <= pi_msb;		//OUT
-			low <= pi_low;		//CAL && 8bits
-		end
 		else if(next_state == CAL)begin
-			case(length)
+			case(pi_length)
 				0:begin	//8
-					if(low == 1)begin
+					if(pi_low == 1)begin
 						_8bits_data[0] <= data[8];
 						_8bits_data[1] <= data[9];
 						_8bits_data[2] <= data[10];
@@ -119,13 +111,13 @@ always@(posedge clk or posedge reset)begin
 					data <= data;
 				end
 				2:begin	//24
-					if(fill == 1)
+					if(pi_fill == 1)
 						_24bits_data <= {data, 8'd0};
 					else 
 						_24bits_data <= {8'd0, data};
 				end
 				3:begin	//32
-					if(fill == 1)
+					if(pi_fill == 1)
 						_32bits_data <= {data, 16'd0};
 					else 
 						_32bits_data <= {16'd0, data};
@@ -134,9 +126,9 @@ always@(posedge clk or posedge reset)begin
 		end
 		else if(next_state == STI_OUT)begin
 			so_valid <= 1;
-			case(length)
+			case(pi_length)
 				0:begin
-					if(msb == 1)
+					if(pi_msb == 1)
 						so_data <= _8bits_data[5'd7-counter];
 					else 
 						so_data <= _8bits_data[counter];
@@ -151,7 +143,7 @@ always@(posedge clk or posedge reset)begin
 					counter <= counter + 1;
 				end
 				1:begin
-					if(msb == 1)
+					if(pi_msb == 1)
 						so_data <= data[5'd15-counter];
 					else 
 						so_data <= data[counter];
@@ -170,7 +162,7 @@ always@(posedge clk or posedge reset)begin
 					counter <= counter + 1;
 				end
 				2:begin
-					if(msb == 1)
+					if(pi_msb == 1)
 						so_data <= _24bits_data[5'd23-counter];
 					else 
 						so_data <= _24bits_data[counter];
@@ -193,7 +185,7 @@ always@(posedge clk or posedge reset)begin
 					counter <= counter + 1;
 				end
 				3:begin
-					if(msb == 1)
+					if(pi_msb == 1)
 						so_data <= _32bits_data[5'd31-counter];
 					else 
 						so_data <= _32bits_data[counter];
@@ -231,9 +223,9 @@ end
 
 always@(posedge clk)begin
 	if(next_state == STI_OUT)begin
-		case(length)
+		case(pi_length)
 			0:begin
-				if(msb == 1)begin
+				if(pi_msb == 1)begin
 					pixel_dataout[0] <= _8bits_data[0];
 					pixel_dataout[1] <= _8bits_data[1];
 					pixel_dataout[2] <= _8bits_data[2];
@@ -256,7 +248,7 @@ always@(posedge clk)begin
 			end
 			1:begin
 				if(counter == 7)begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= data[8];
 						pixel_dataout[1] <= data[9];
 						pixel_dataout[2] <= data[10];
@@ -278,7 +270,7 @@ always@(posedge clk)begin
 					end
 				end
 				else begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= data[0];
 						pixel_dataout[1] <= data[1];
 						pixel_dataout[2] <= data[2];
@@ -302,7 +294,7 @@ always@(posedge clk)begin
 			end
 			2:begin
 				if(counter == 7)begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= _24bits_data[16];
 						pixel_dataout[1] <= _24bits_data[17];
 						pixel_dataout[2] <= _24bits_data[18];
@@ -324,7 +316,7 @@ always@(posedge clk)begin
 					end
 				end
 				else if(counter == 15)begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= _24bits_data[8];
 						pixel_dataout[1] <= _24bits_data[9];
 						pixel_dataout[2] <= _24bits_data[10];
@@ -346,7 +338,7 @@ always@(posedge clk)begin
 					end
 				end
 				else begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= _24bits_data[0];
 						pixel_dataout[1] <= _24bits_data[1];
 						pixel_dataout[2] <= _24bits_data[2];
@@ -370,7 +362,7 @@ always@(posedge clk)begin
 			end
 			3:begin
 				if(counter == 7)begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= _32bits_data[24];
 						pixel_dataout[1] <= _32bits_data[25];
 						pixel_dataout[2] <= _32bits_data[26];
@@ -392,7 +384,7 @@ always@(posedge clk)begin
 					end
 				end
 				else if(counter == 15)begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= _32bits_data[16];
 						pixel_dataout[1] <= _32bits_data[17];
 						pixel_dataout[2] <= _32bits_data[18];
@@ -414,7 +406,7 @@ always@(posedge clk)begin
 					end
 				end
 				else if(counter == 23)begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= _32bits_data[8];
 						pixel_dataout[1] <= _32bits_data[9];
 						pixel_dataout[2] <= _32bits_data[10];
@@ -436,7 +428,7 @@ always@(posedge clk)begin
 					end
 				end
 				else begin
-					if(msb == 1)begin
+					if(pi_msb == 1)begin
 						pixel_dataout[0] <= _32bits_data[0];
 						pixel_dataout[1] <= _32bits_data[1];
 						pixel_dataout[2] <= _32bits_data[2];
