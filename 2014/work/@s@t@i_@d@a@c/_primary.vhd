@@ -7,7 +7,8 @@ entity STI_DAC is
         CAL             : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi0);
         STI_OUT         : vl_logic_vector(0 to 2) := (Hi0, Hi1, Hi1);
         FINISH_0        : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi0);
-        FINISH          : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi1)
+        TEST            : vl_logic_vector(0 to 2) := (Hi1, Hi0, Hi1);
+        FINISH          : vl_logic_vector(0 to 2) := (Hi1, Hi1, Hi0)
     );
     port(
         clk             : in     vl_logic;
@@ -32,5 +33,6 @@ entity STI_DAC is
     attribute mti_svvh_generic_type of CAL : constant is 1;
     attribute mti_svvh_generic_type of STI_OUT : constant is 1;
     attribute mti_svvh_generic_type of FINISH_0 : constant is 1;
+    attribute mti_svvh_generic_type of TEST : constant is 1;
     attribute mti_svvh_generic_type of FINISH : constant is 1;
 end STI_DAC;
