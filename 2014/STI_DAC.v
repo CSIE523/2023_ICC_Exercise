@@ -26,7 +26,7 @@ parameter IDLE = 3'd0,
 	  FINISH = 3'd5;
 
 reg [7:0] _8bits_data;
-reg [15:0] data;
+// reg [15:0] pi_data;
 reg [23:0] _24bits_data;
 reg [31:0] _32bits_data;
 reg [4:0] counter;
@@ -70,7 +70,7 @@ always@(*)begin
 end
 
 
-//DATA INPUT
+//pi_data INPUT
 always@(posedge clk or posedge reset)begin
 	if(reset)
 		pixel_addr <= 255;
@@ -81,46 +81,47 @@ always@(posedge clk or posedge reset)begin
 			done <= 0;
 			pixel_wr <= 0;
 		end
-		else if(next_state == READ)
-			data <= pi_data;
+		else if(next_state == READ)begin
+		end
+			//pi_data <= pi_data;
 		else if(next_state == CAL)begin
 			case(pi_length)
 				0:begin	//8
 					if(pi_low == 1)begin
-						_8bits_data[0] <= data[8];
-						_8bits_data[1] <= data[9];
-						_8bits_data[2] <= data[10];
-						_8bits_data[3] <= data[11];
-						_8bits_data[4] <= data[12];
-						_8bits_data[5] <= data[13];
-						_8bits_data[6] <= data[14];
-						_8bits_data[7] <= data[15];
+						_8bits_data[0] <= pi_data[8];
+						_8bits_data[1] <= pi_data[9];
+						_8bits_data[2] <= pi_data[10];
+						_8bits_data[3] <= pi_data[11];
+						_8bits_data[4] <= pi_data[12];
+						_8bits_data[5] <= pi_data[13];
+						_8bits_data[6] <= pi_data[14];
+						_8bits_data[7] <= pi_data[15];
 					end
 					else begin
-						_8bits_data[0] <= data[0];
-						_8bits_data[1] <= data[1];
-						_8bits_data[2] <= data[2];
-						_8bits_data[3] <= data[3];
-						_8bits_data[4] <= data[4];
-						_8bits_data[5] <= data[5];
-						_8bits_data[6] <= data[6];
-						_8bits_data[7] <= data[7];
+						_8bits_data[0] <= pi_data[0];
+						_8bits_data[1] <= pi_data[1];
+						_8bits_data[2] <= pi_data[2];
+						_8bits_data[3] <= pi_data[3];
+						_8bits_data[4] <= pi_data[4];
+						_8bits_data[5] <= pi_data[5];
+						_8bits_data[6] <= pi_data[6];
+						_8bits_data[7] <= pi_data[7];
 					end
 				end
 				1:begin	//16
-					data <= data;
+					//pi_data <= pi_data;
 				end
 				2:begin	//24
 					if(pi_fill == 1)
-						_24bits_data <= {data, 8'd0};
+						_24bits_data <= {pi_data, 8'd0};
 					else 
-						_24bits_data <= {8'd0, data};
+						_24bits_data <= {8'd0, pi_data};
 				end
 				3:begin	//32
 					if(pi_fill == 1)
-						_32bits_data <= {data, 16'd0};
+						_32bits_data <= {pi_data, 16'd0};
 					else 
-						_32bits_data <= {16'd0, data};
+						_32bits_data <= {16'd0, pi_data};
 				end
 			endcase
 		end
@@ -144,9 +145,9 @@ always@(posedge clk or posedge reset)begin
 				end
 				1:begin
 					if(pi_msb == 1)
-						so_data <= data[5'd15-counter];
+						so_data <= pi_data[5'd15-counter];
 					else 
-						so_data <= data[counter];
+						so_data <= pi_data[counter];
 
 					if(counter == 15)begin
 						done <= 1;
@@ -249,46 +250,46 @@ always@(posedge clk)begin
 			1:begin
 				if(counter == 7)begin
 					if(pi_msb == 1)begin
-						pixel_dataout[0] <= data[8];
-						pixel_dataout[1] <= data[9];
-						pixel_dataout[2] <= data[10];
-						pixel_dataout[3] <= data[11];
-						pixel_dataout[4] <= data[12];
-						pixel_dataout[5] <= data[13];
-						pixel_dataout[6] <= data[14];
-						pixel_dataout[7] <= data[15];
+						pixel_dataout[0] <= pi_data[8];
+						pixel_dataout[1] <= pi_data[9];
+						pixel_dataout[2] <= pi_data[10];
+						pixel_dataout[3] <= pi_data[11];
+						pixel_dataout[4] <= pi_data[12];
+						pixel_dataout[5] <= pi_data[13];
+						pixel_dataout[6] <= pi_data[14];
+						pixel_dataout[7] <= pi_data[15];
 					end
 					else begin
-						pixel_dataout[0] <= data[7];
-						pixel_dataout[1] <= data[6];
-						pixel_dataout[2] <= data[5];
-						pixel_dataout[3] <= data[4];
-						pixel_dataout[4] <= data[3];
-						pixel_dataout[5] <= data[2];
-						pixel_dataout[6] <= data[1];
-						pixel_dataout[7] <= data[0];
+						pixel_dataout[0] <= pi_data[7];
+						pixel_dataout[1] <= pi_data[6];
+						pixel_dataout[2] <= pi_data[5];
+						pixel_dataout[3] <= pi_data[4];
+						pixel_dataout[4] <= pi_data[3];
+						pixel_dataout[5] <= pi_data[2];
+						pixel_dataout[6] <= pi_data[1];
+						pixel_dataout[7] <= pi_data[0];
 					end
 				end
 				else begin
 					if(pi_msb == 1)begin
-						pixel_dataout[0] <= data[0];
-						pixel_dataout[1] <= data[1];
-						pixel_dataout[2] <= data[2];
-						pixel_dataout[3] <= data[3];
-						pixel_dataout[4] <= data[4];
-						pixel_dataout[5] <= data[5];
-						pixel_dataout[6] <= data[6];
-						pixel_dataout[7] <= data[7];
+						pixel_dataout[0] <= pi_data[0];
+						pixel_dataout[1] <= pi_data[1];
+						pixel_dataout[2] <= pi_data[2];
+						pixel_dataout[3] <= pi_data[3];
+						pixel_dataout[4] <= pi_data[4];
+						pixel_dataout[5] <= pi_data[5];
+						pixel_dataout[6] <= pi_data[6];
+						pixel_dataout[7] <= pi_data[7];
 					end
 					else begin
-						pixel_dataout[0] <= data[15];
-						pixel_dataout[1] <= data[14];
-						pixel_dataout[2] <= data[13];
-						pixel_dataout[3] <= data[12];
-						pixel_dataout[4] <= data[11];
-						pixel_dataout[5] <= data[10];
-						pixel_dataout[6] <= data[9];
-						pixel_dataout[7] <= data[8];
+						pixel_dataout[0] <= pi_data[15];
+						pixel_dataout[1] <= pi_data[14];
+						pixel_dataout[2] <= pi_data[13];
+						pixel_dataout[3] <= pi_data[12];
+						pixel_dataout[4] <= pi_data[11];
+						pixel_dataout[5] <= pi_data[10];
+						pixel_dataout[6] <= pi_data[9];
+						pixel_dataout[7] <= pi_data[8];
 					end
 				end
 			end
