@@ -4,41 +4,41 @@ K3
 cModel Technology
 Z0 dC:\altera\13.0sp1\2023_ICC\2006
 vSTI_DAC
-Z1 IjX[]1jQ3=_S0[i5NQ?_1j0
-Z2 VJ4fJM3F?=ei4bjB]HJl>P1
-Z3 dC:\altera\13.0sp1\2023_ICC\2014
-Z4 w1676887029
-Z5 8C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v
-Z6 FC:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v
+!i10b 1
+Z1 !s100 <T>Vhh@VkG>^2=c92KZlj0
+Z2 I`hJ;C6<V1[Ooa2`HHT0kn2
+Z3 VJ4fJM3F?=ei4bjB]HJl>P1
+Z4 dC:\altera\13.0sp1\2023_ICC\2014
+Z5 w1676967155
+Z6 8C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v
+Z7 FC:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v
 L0 1
-Z7 OV;L;10.1d;51
+Z8 OV;L;10.1d;51
 r1
-31
-Z8 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v|
-Z9 o-work work -O0
-Z10 n@s@t@i_@d@a@c
-!i10b 1
-Z11 !s100 Ic8JB^ko@]Z0ZM7hUILbN1
 !s85 0
-Z12 !s108 1676887031.429000
-Z13 !s107 C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v|
+31
+!s108 1676967540.513000
+!s107 C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v|
+Z9 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.v|
 !s101 -O0
+Z10 o-work work -O0
+Z11 n@s@t@i_@d@a@c
 vtestfixture
-!i10b 1
-Z14 !s100 kn?[6EQa?6JclYoea@oe42
-Z15 In7X_V@1TCJUOPA?N^<>zS0
-Z16 VKBIIT=eCh7cJh[^JXBGX00
-R3
-Z17 w1394696408
-Z18 8C:/altera/13.0sp1/2023_ICC/2014/testfixture.v
-Z19 FC:/altera/13.0sp1/2023_ICC/2014/testfixture.v
+Z12 !s100 kn?[6EQa?6JclYoea@oe42
+Z13 In7X_V@1TCJUOPA?N^<>zS0
+Z14 VKBIIT=eCh7cJh[^JXBGX00
+R4
+Z15 w1394696408
+Z16 8C:/altera/13.0sp1/2023_ICC/2014/testfixture.v
+Z17 FC:/altera/13.0sp1/2023_ICC/2014/testfixture.v
 L0 3
-R7
+R8
 r1
-!s85 0
 31
-!s108 1676887031.516000
-!s107 C:/altera/13.0sp1/2023_ICC/2014/testfixture.v|
-Z20 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2014/testfixture.v|
+Z18 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2014/testfixture.v|
+R10
+!i10b 1
+!s85 0
+Z19 !s108 1676967540.430000
+Z20 !s107 C:/altera/13.0sp1/2023_ICC/2014/testfixture.v|
 !s101 -O0
-R9
