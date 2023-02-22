@@ -241,7 +241,7 @@ always@(posedge clk or negedge reset)begin
     end
 end
 
-always @(posedge clk or negedge reset) begin
+always @(negedge clk or negedge reset) begin
 	if(!reset)
 	begin
 		res_wr <= 0;
