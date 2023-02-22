@@ -65,14 +65,15 @@ always@(*)begin
 				next_state = BAC_FIND;
 			end
 			BAC_FIND:begin
-                if(res_di != 0) next_state = ZERO_CASE;
-				else if(row == 1 && col == 1) next_state = FINISH;
+				if(row == 1 && col == 1) next_state = FINISH;
+                else if(res_di != 0) next_state = ZERO_CASE;
                 else next_state = BAC_FIND;  
             end
 			ZERO_CASE:
 				next_state = BAC_READ_RAM;
 			BAC_READ_RAM:begin
-				if(cnt == 6) next_state = BAC_WRITE_RAM;
+				if(row == 1 && col == 1) next_state = FINISH;
+				else if(cnt == 6) next_state = BAC_WRITE_RAM;
                 else next_state = BAC_READ_RAM;
 			end
 			BAC_WRITE_RAM:begin
