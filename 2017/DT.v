@@ -85,6 +85,7 @@ always@(*)begin
 				else
                 	next_state = BAC_FIND; 
 			end
+			FINISH: next_state = FINISH;
             default:    next_state = IDLE;
         endcase
     end 
