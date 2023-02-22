@@ -62,7 +62,7 @@ always@(*)begin
 			end
 			CHANGE_DIR:
 			begin
-				next_state <= BAC_FIND;
+				next_state = BAC_FIND;
 			end
 			BAC_FIND:begin
                 if(res_di != 0) next_state = ZERO_CASE;
