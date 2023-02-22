@@ -31,8 +31,11 @@ reg [6:0] row, col;
 reg dir; //0 forward 1 backward
 
 assign done = (state == FINISH);
-always@(posedge clk)begin
-    state <= next_state;
+always@(posedge clk or negedge reset)begin
+    if(!reset)
+		state <= FOR_READ_ROM;
+	else 
+		state <= next_state;
 end
 
 always@(*)begin
@@ -85,7 +88,6 @@ always@(*)begin
 				else
                 	next_state = BAC_FIND; 
 			end
-			FINISH: next_state = FINISH;
             default:    next_state = IDLE;
         endcase
     end 
