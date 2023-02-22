@@ -1,4 +1,11 @@
-C:/altera/13.0sp1/2023_ICC/2014/testfixture.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2014/testfixture.v
+C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.vo {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2014/STI_DAC.vo
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module STI_DAC
+
+Top level modules:
+	STI_DAC
+
+} {} {}} C:/altera/13.0sp1/2023_ICC/2014/testfixture.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2014/testfixture.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module testfixture
 

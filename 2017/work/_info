@@ -1,0 +1,84 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.0sp1\2023_ICC\2018b
+vDT
+Z1 !s100 hWMLoc^8CE_a;2T?RGCjh2
+Z2 II:k]0gN65i9G`bdD:UMHC3
+Z3 VOf[4ajZNK[G_;BoHkE^020
+Z4 dC:\altera\13.0sp1\2023_ICC\2017
+Z5 w1677060733
+Z6 8C:/altera/13.0sp1/2023_ICC/2017/DT.v
+Z7 FC:/altera/13.0sp1/2023_ICC/2017/DT.v
+L0 1
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2017/DT.v|
+Z10 o-work work -O0
+n@d@t
+!i10b 1
+!s85 0
+Z11 !s108 1677060797.211000
+Z12 !s107 C:/altera/13.0sp1/2023_ICC/2017/DT.v|
+!s101 -O0
+vres_RAM
+!i10b 1
+Z13 !s100 4P`]NEh8lzDz3aB>>kz3K2
+Z14 IJa@41V;RBj_Sd6Wc^9BEQ3
+Z15 VaB]kk<Pbk==z^0m=`z`[>0
+R4
+Z16 w1677060791
+Z17 8C:/altera/13.0sp1/2023_ICC/2017/testfixture.v
+Z18 FC:/altera/13.0sp1/2023_ICC/2017/testfixture.v
+Z19 L0 222
+R8
+r1
+!s85 0
+31
+Z20 !s108 1677060797.344000
+Z21 !s107 C:/altera/13.0sp1/2023_ICC/2017/testfixture.v|
+Z22 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2017/testfixture.v|
+!s101 -O0
+R10
+Z23 nres_@r@a@m
+vsti_ROM
+!i10b 1
+!s100 QEfoXL<nDCgdNV^BoV1`]2
+I1N;KO<LKlohXe<FMM1Zij0
+Z24 VM6_@zEzh3H[KNzlKPTfiM2
+R4
+R16
+R17
+R18
+Z25 L0 198
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
+Z26 nsti_@r@o@m
+vtestfixture
+!i10b 1
+!s100 a2H:`WBz?LdRhg`D[J=dR2
+I4=Jn8hc1ocGMc51e43lR>2
+Z27 V<d7^G6dXC8e=mX:l9bUfB0
+R4
+R16
+R17
+R18
+L0 18
+R8
+r1
+!s85 0
+31
+R20
+R21
+R22
+!s101 -O0
+R10
