@@ -31,11 +31,8 @@ reg [6:0] row, col;
 reg dir; //0 forward 1 backward
 
 assign done = (state == FINISH);
-always@(posedge clk or negedge reset)begin
-    if(!reset)
-		state <= IDLE;
-	else 
-		state <= next_state;
+always@(posedge clk)begin
+    state <= next_state;
 end
 
 always@(*)begin
@@ -99,7 +96,7 @@ end
 //sti_di
 always@(posedge clk or negedge reset)begin
     if(!reset)begin
-		// sti_addr <= 8;
+		sti_addr <= 8;
 		sti_rd <= 0;
 
 		res_rd <= 0;
@@ -115,8 +112,6 @@ always@(posedge clk or negedge reset)begin
 
     end
     else begin
-		if(next_state == IDLE)
-			sti_addr <= 8;
 		if(next_state == FOR_READ_ROM)begin
 			// if(sti_di[col[3:0]] == 0) //go to next pix
 			// begin
