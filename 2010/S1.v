@@ -10,7 +10,7 @@ module S1(clk,
 input clk, rst;
 output reg RB1_RW;      // control signal for RB1: Read/Write
 output  [4:0] RB1_A; // control signal for RB1: address
-output reg [7:0] RB1_D; // data path for RB1: input port
+output [7:0] RB1_D; // data path for RB1: input port
 input [7:0] RB1_Q;  // data path for RB1: output port
 output reg sen, sd;
 
@@ -20,7 +20,6 @@ parameter IDLE = 2'd0,
 	  READ = 2'd1,
 	  OUT = 2'd2;
 
-reg r_w;
 reg [2:0]addr;
 reg [17:0]data;
 reg [4:0]counter;
@@ -71,6 +70,7 @@ always@(posedge clk or posedge rst)begin
 			counter <= 0;
 			sen <= 1;
 			addr <= addr + 1;
+			RB1_RW <= 1;
 		end
 		else if(next_state == READ)begin
 			data[counter-1] <= RB1_Q[7-addr];

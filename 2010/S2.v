@@ -66,6 +66,7 @@ always@(posedge clk or posedge rst)begin
 	end
     else begin
  		if(next_state == READ)begin
+			RB2_RW <= 1;
 			if(counter_RB2 <= 2)
 				RB2_A[2-counter_RB2] <= sd; 
 			else 
