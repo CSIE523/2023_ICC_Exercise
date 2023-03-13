@@ -61,7 +61,6 @@ always@(posedge clk or posedge rst)begin
 		sen <= 1;
 		RB1_D <= 0;
 		sd <= 0;
-		r_w <= 0;
 		addr <= 0;
 		counter <= 0;
     end
