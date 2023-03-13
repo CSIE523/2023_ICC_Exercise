@@ -1,11 +1,9 @@
-C:/altera/13.0sp1/2023_ICC/2010/tb.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2010/tb.v
+C:/altera/13.0sp1/2023_ICC/2010/S2.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2010/S2.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module RB1
--- Compiling module RB2
--- Compiling module tb
+-- Compiling module S2
 
 Top level modules:
-	tb
+	S2
 
 } {} {}} C:/altera/13.0sp1/2023_ICC/2010/S1.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2010/S1.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012

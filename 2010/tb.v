@@ -1,4 +1,9 @@
-`define tb1
+`timescale 1ns/10ps
+`define CYCLE      100.0  
+`define SDFFILE    "./S1S2.sdf"
+`define End_CYCLE  10000000
+
+`define tb2
 
 `ifdef tb1
    `define INFILE_RB1_ini "tb1_RB1_ini.dat"
@@ -12,7 +17,6 @@
    `define INFILE_RB2_ref "tb2_RB2_ref.dat"
 `endif
 
-`define CYCLE 100
 
 `include "RB1.v"
 `include "RB2.v"
@@ -98,6 +102,10 @@ module tb();
            
     end
     
+    `ifdef SDF
+        initial $sdf_annotate(`SDFFILE, tb);
+    `endif
+
     always #duty clk = ~clk;
     
 
