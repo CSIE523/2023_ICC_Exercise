@@ -9,7 +9,7 @@ module S1(clk,
 
 input clk, rst;
 output reg RB1_RW;      // control signal for RB1: Read/Write
-output  [4:0] RB1_A; // control signal for RB1: address
+output reg [4:0] RB1_A; // control signal for RB1: address
 output [7:0] RB1_D; // data path for RB1: input port
 input [7:0] RB1_Q;  // data path for RB1: output port
 output reg sen, sd;
