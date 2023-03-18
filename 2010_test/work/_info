@@ -1,0 +1,125 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.0sp1\2023_ICC\2009
+vRB1
+!i10b 1
+Z1 !s100 mL6A3:H`^[660oaL1<Hh22
+Z2 IZBUl_1aGQUcX];XPi:`Yg0
+Z3 Vbo:?Pd9VDFgN8e[`FP^Q70
+Z4 dC:\altera\13.0sp1\2023_ICC\2010_test
+Z5 w1269282980
+Z6 FRB1.v
+Z7 8C:/altera/13.0sp1/2023_ICC/2010_test/testfixture.v
+Z8 FC:/altera/13.0sp1/2023_ICC/2010_test/testfixture.v
+L0 55
+Z9 OV;L;10.1d;51
+r1
+!s85 0
+31
+Z10 !s108 1679107655.797000
+Z11 !s107 RB2.v|RB1.v|C:/altera/13.0sp1/2023_ICC/2010_test/testfixture.v|
+Z12 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2010_test/testfixture.v|
+!s101 -O0
+Z13 o-work work -O0
+Z14 n@r@b1
+vRB2
+!i10b 1
+Z15 !s100 H:4bUTd8Z;Rh6543cVoU73
+Z16 Ig0XZj:77Rf4Sa3XSl5Wn>0
+Z17 VY<X:<lk]]o2<^7KJkVYAO2
+R4
+R5
+Z18 FRB2.v
+R7
+R8
+L0 55
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!s101 -O0
+R13
+Z19 n@r@b2
+vS1
+Z20 IbfQKz>V;m^d2HVj=lW:OL0
+Z21 V4HRa`QlY?GX[:C7WEEomE1
+R4
+Z22 w1679107649
+Z23 8C:/altera/13.0sp1/2023_ICC/2010_test/S1.v
+Z24 FC:/altera/13.0sp1/2023_ICC/2010_test/S1.v
+L0 1
+R9
+r1
+31
+Z25 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2010_test/S1.v|
+R13
+n@s1
+Z26 !s100 10lDe=`E>>BCI?l4d`9>83
+Z27 !s108 1679107655.684000
+Z28 !s107 C:/altera/13.0sp1/2023_ICC/2010_test/S1.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vS2
+Z29 !s100 b4VfEMhjWMCR:QT?UFi8E0
+Z30 IfQS13K5;caN[ZQz_IQ`M>1
+Z31 VT2l0<fEQRkzH1PY<EQ0X>0
+R4
+Z32 w1679107405
+Z33 8C:/altera/13.0sp1/2023_ICC/2010_test/S2.v
+Z34 FC:/altera/13.0sp1/2023_ICC/2010_test/S2.v
+L0 1
+R9
+r1
+31
+Z35 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2010_test/S2.v|
+R13
+n@s2
+!i10b 1
+!s85 0
+Z36 !s108 1679107655.746000
+Z37 !s107 C:/altera/13.0sp1/2023_ICC/2010_test/S2.v|
+!s101 -O0
+vtb
+Z38 !s100 BNZhcN`?zz`IVEX2VjQMR0
+Z39 IOhUOdTA^nSaF79E46OeVA3
+Z40 VHhhX1^60ROPenfeo<6gfz0
+R4
+Z41 w1678725223
+Z42 8C:/altera/13.0sp1/2023_ICC/2010_test/tb.v
+Z43 FC:/altera/13.0sp1/2023_ICC/2010_test/tb.v
+L0 26
+R9
+r1
+31
+Z44 !s108 1679105220.742000
+Z45 !s107 RB2.v|RB1.v|C:/altera/13.0sp1/2023_ICC/2010_test/tb.v|
+Z46 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2010_test/tb.v|
+R13
+!i10b 1
+!s85 0
+!s101 -O0
+vtestfixture
+!i10b 1
+Z47 !s100 W^FCAWk]Rm28h]kD?am931
+Z48 Iff]<3e:UQz]XZC<n`OM0P1
+Z49 VaB]<EkOa90=NfbjP5kn_51
+R4
+R5
+R7
+R8
+L0 24
+R9
+r1
+!s85 0
+31
+R10
+R11
+R12
+!s101 -O0
+R13
