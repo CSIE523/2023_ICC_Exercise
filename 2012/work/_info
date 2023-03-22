@@ -1,0 +1,122 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.0sp1\2023_ICC\2009
+vBUFFER
+!i10b 1
+!s100 9oKW8kak@`PfI[`[?Y>c@0
+IUaiKn6zPOYKU4<9IYK8a13
+Z1 VO3hnc`jjB^_[T:Yk>c1@k3
+Z2 dC:\altera\13.0sp1\2023_ICC\2012
+Z3 w1331542150
+Z4 8C:/altera/13.0sp1/2023_ICC/2012/flash_b.v
+Z5 FC:/altera/13.0sp1/2023_ICC/2012/flash_b.v
+Z6 L0 1626
+Z7 OV;L;10.1d;51
+r1
+!s85 0
+31
+Z8 !s108 1679467931.599000
+Z9 !s107 C:/altera/13.0sp1/2023_ICC/2012/flash_b.v|
+Z10 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2012/flash_b.v|
+!s101 -O0
+Z11 o-work work -O0
+Z12 n@b@u@f@f@e@r
+vBUFFER_A
+Z13 I0Q>gHYj>TIAe91B9z1P`<2
+Z14 V1`HaB35?nPLX`ll[ane9_3
+R2
+Z15 w1679464380
+Z16 8C:/altera/13.0sp1/2023_ICC/2012/flash_a.v
+Z17 FC:/altera/13.0sp1/2023_ICC/2012/flash_a.v
+Z18 L0 1637
+R7
+r1
+31
+Z19 !s108 1679467931.521000
+Z20 !s107 C:/altera/13.0sp1/2023_ICC/2012/flash_a.v|
+Z21 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2012/flash_a.v|
+R11
+Z22 n@b@u@f@f@e@r_@a
+!i10b 1
+Z23 !s100 Y2nVUmLK@5b:cHV0SdR7B3
+!s85 0
+!s101 -O0
+vflash_a
+Z24 IL>feEh1M0bJlGXHOeb:OY0
+Z25 V@NOB>_W?^3Nz3djA>3R1g3
+R2
+R15
+R16
+R17
+L0 12
+R7
+r1
+31
+R19
+R20
+R21
+R11
+!i10b 1
+Z26 !s100 co`eENZAT8EO4[ULWZ;Sl3
+!s85 0
+!s101 -O0
+vflash_b
+!i10b 1
+!s100 M3EgShAfe55HUebP;=2^V3
+I0Lc;mZXz__1CnB35;e7gW3
+Z27 Vzn;f4G`Om^DS1g`[W5AlY3
+R2
+R3
+R4
+R5
+L0 3
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!s101 -O0
+R11
+vNFC
+Z28 IK[=Ee2T^b^WeW:dcn8PIL1
+Z29 VKlKB4Fh5OGmEA0BWGFoQQ2
+R2
+Z30 w1679467916
+Z31 8C:/altera/13.0sp1/2023_ICC/2012/NFC.v
+Z32 FC:/altera/13.0sp1/2023_ICC/2012/NFC.v
+L0 2
+R7
+r1
+31
+Z33 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2012/NFC.v|
+R11
+Z34 n@n@f@c
+Z35 !s100 e;?7k<M?j6W@_7DF]3PLP3
+Z36 !s108 1679467931.306000
+Z37 !s107 C:/altera/13.0sp1/2023_ICC/2012/NFC.v|
+!i10b 1
+!s85 0
+!s101 -O0
+vtest
+Z38 !s100 bk9nlnDSnIof>Td3k67;H2
+Z39 IB0RZoYNRIVH@X9n9FKm[S1
+Z40 V]@7J[Rhb`0K?RUJFFBYSi1
+R2
+Z41 w1679466632
+Z42 8C:/altera/13.0sp1/2023_ICC/2012/tb.v
+Z43 FC:/altera/13.0sp1/2023_ICC/2012/tb.v
+L0 20
+R7
+r1
+31
+Z44 !s108 1679467931.399000
+Z45 !s107 ./flash_b.v|./flash_a.v|C:/altera/13.0sp1/2023_ICC/2012/tb.v|
+Z46 !s90 -reportprogress|300|-work|work|C:/altera/13.0sp1/2023_ICC/2012/tb.v|
+R11
+!i10b 1
+!s85 0
+!s101 -O0

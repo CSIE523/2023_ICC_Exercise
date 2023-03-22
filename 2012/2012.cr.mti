@@ -1,0 +1,30 @@
+C:/altera/13.0sp1/2023_ICC/2012/flash_b.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2012/flash_b.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module flash_b
+-- Compiling module BUFFER
+
+Top level modules:
+	flash_b
+
+} {} {}} C:/altera/13.0sp1/2023_ICC/2012/flash_a.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2012/flash_a.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module flash_a
+-- Compiling module BUFFER_A
+
+Top level modules:
+	flash_a
+	BUFFER_A
+
+} {} {}} C:/altera/13.0sp1/2023_ICC/2012/tb.v {1 {vlog -work work C:/altera/13.0sp1/2023_ICC/2012/tb.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module flash_a
+-- Compiling module BUFFER_A
+-- Compiling module flash_b
+-- Compiling module BUFFER
+-- Compiling module test
+
+Top level modules:
+	BUFFER_A
+	test
+
+} {} {}}
